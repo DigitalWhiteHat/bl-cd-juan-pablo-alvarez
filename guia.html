@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Guía de SEO de Juan Pablo Álvarez en Bloomberg Línea: qué rinde en sus notas, medido sobre su propio trabajo.">
+<title>Qué rinde en el Central Desk · Juan Pablo Álvarez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+  /* Identidad Bloomberg Línea: negro, blanco y el verde de «Línea» (#36BF58); titulares en grotesca tipo Neue Haas, texto en Lora */
+  :root {
+    color-scheme: light;
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --ink: #191919;
+    --ink-2: #3D3D3D;
+    --muted: #6B6B6B;
+    --rule: #DADADA;
+    --rule-strong: #BDBDBD;
+    --neutral-bg: #F4F4F4;
+    --accent: #36BF58;
+    --accent-ink: #15803D;
+    --accent-track: #E3F4E7;
+    --notes-bar: #191919;
+    --c-prop: #36BF58;
+    --c-rev: #0F6B34;
+    --c-rest: #D0D0D0;
+    --good: #15803D;
+    --good-bg: #E8F6EC;
+    --warn: #A15300;
+    --warn-bg: #FFF1E0;
+    --bad: #C0341F;
+    --bad-bg: #FDECE8;
+    --bar-bg: #000000;
+    --bar-ink: #FFFFFF;
+    --bar-muted: #BDBDBD;
+    --bar-accent: #36BF58;
+    --bar-rule: #2A2A2A;
+    --sans: "Neue Haas Grotesk Display Pro", "neue-haas-grotesk-display", "Helvetica Neue", "Inter Tight", Helvetica, Arial, sans-serif;
+    --serif: "Lora", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0A0A0A;
+      --surface: #141414;
+      --ink: #F2F2F2;
+      --ink-2: #CFCFCF;
+      --muted: #9A9A9A;
+      --rule: #2A2A2A;
+      --rule-strong: #4A4A4A;
+      --neutral-bg: #1C1C1C;
+      --accent: #30AF50;
+      --accent-ink: #4CD472;
+      --accent-track: #13261A;
+      --notes-bar: #CFCFCF;
+      --c-prop: #30AF50;
+      --c-rev: #14773A;
+      --c-rest: #3A3A3A;
+      --good: #4CD472;
+      --good-bg: #0F2A18;
+      --warn: #FFB060;
+      --warn-bg: #2E2110;
+      --bad: #FF7A66;
+      --bad-bg: #2E1512;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --ink: #F2F2F2;
+    --ink-2: #CFCFCF;
+    --muted: #9A9A9A;
+    --rule: #2A2A2A;
+    --rule-strong: #4A4A4A;
+    --neutral-bg: #1C1C1C;
+    --accent: #30AF50;
+    --accent-ink: #4CD472;
+    --accent-track: #13261A;
+    --notes-bar: #CFCFCF;
+    --c-prop: #30AF50;
+    --c-rev: #14773A;
+    --c-rest: #3A3A3A;
+    --good: #4CD472;
+    --good-bg: #0F2A18;
+    --warn: #FFB060;
+    --warn-bg: #2E2110;
+    --bad: #FF7A66;
+    --bad-bg: #2E1512;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-inline: clamp(16px, 4vw, 44px);
+    padding-block: clamp(28px, 5vw, 56px) 72px;
+  }
+  a { color: var(--accent-ink); text-underline-offset: 3px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+  p { margin: 0; max-width: 68ch; }
+  strong { font-weight: 600; color: var(--ink); }
+
+  /* Masthead */
+  .mast {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: clamp(24px, 5vw, 64px);
+    align-items: end;
+  }
+  .kicker {
+    font: 600 12px/1.2 var(--sans);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: var(--sans);
+    font-weight: 780;
+    font-size: clamp(44px, 7vw, 76px);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: clamp(18px, 2vw, 20.5px);
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 46ch;
+  }
+  .spec {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 2px solid var(--ink);
+  }
+  .spec > div { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .spec > div:nth-child(odd) { padding-right: 18px; }
+  .spec dt {
+    font: 600 11px/1.3 var(--sans);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .spec dd { margin: 5px 0 0; font: 650 21px/1.15 var(--sans); color: var(--ink); }
+  .spec dd small { display: block; margin-top: 3px; font: 400 13px/1.35 var(--sans); color: var(--muted); }
+  .bezel {
+    height: 14px;
+    margin-top: 26px;
+    background:
+      repeating-linear-gradient(90deg, var(--accent) 0 2px, transparent 2px 60px) left bottom / 100% 14px no-repeat,
+      repeating-linear-gradient(90deg, var(--rule-strong) 0 1px, transparent 1px 12px) left bottom / 100% 7px no-repeat;
+  }
+
+  /* Sections */
+  section { margin-top: clamp(48px, 7vw, 76px); }
+  .sec-head { display: grid; gap: 10px; margin-bottom: 22px; }
+  .eyebrow {
+    font: 600 11.5px/1.2 var(--sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h2 {
+    font-family: var(--sans);
+    font-weight: 740;
+    font-size: clamp(28px, 3.6vw, 38px);
+    line-height: 1.02;
+    margin: 0;
+    text-wrap: balance;
+    max-width: 24ch;
+  }
+  .sec-head p { color: var(--ink-2); }
+  .stack { display: grid; gap: 14px; }
+  .note { font: 400 14px/1.5 var(--sans); color: var(--muted); max-width: 90ch; margin-top: 14px; }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; border-top: 2px solid var(--ink); }
+  table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 14.5px; }
+  .t-topics { min-width: 900px; }
+  .t-hooks { min-width: 680px; }
+  .t-mix { min-width: 760px; }
+  .t-ever { min-width: 760px; }
+  .t-gsc { min-width: 720px; }
+  thead th {
+    font: 600 11px/1.3 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 12px 14px 10px 0;
+    border-bottom: 1px solid var(--rule-strong);
+    vertical-align: bottom;
+  }
+  tbody th, tbody td {
+    padding: 13px 14px 13px 0;
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+    vertical-align: middle;
+  }
+  tbody th { font-weight: 650; color: var(--ink); }
+  tbody th .how { display: block; margin-top: 3px; font: 400 13.5px/1.4 var(--serif); color: var(--muted); max-width: 42ch; }
+  th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.chan { color: var(--ink-2); white-space: nowrap; }
+  td.idx { color: var(--ink-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.idx b { font-weight: 650; color: var(--ink); }
+  .star { color: var(--muted); font-weight: 400; }
+  tr.ref-row th, tr.ref-row td { color: var(--muted); background: var(--neutral-bg); }
+  tr.ref-row th { padding-left: 10px; }
+  .title-cell { font-weight: 500; color: var(--ink); max-width: 46ch; }
+
+  .barline { display: grid; grid-template-columns: minmax(140px, 1fr) 54px; align-items: center; gap: 10px; }
+  .bar { position: relative; height: 12px; background: var(--accent-track); }
+  .bar .fill { position: absolute; inset: 0 auto 0 0; width: var(--w); background: var(--accent); border-radius: 0 4px 4px 0; }
+  .bar .mid { position: absolute; left: var(--mid); top: -5px; bottom: -5px; width: 1px; background: var(--ink); }
+  .barline .val { font-variant-numeric: tabular-nums; text-align: right; font-weight: 600; }
+  .pair { display: grid; gap: 5px; }
+  .pair .row { display: grid; grid-template-columns: minmax(140px, 1fr) 48px; align-items: center; gap: 10px; }
+  .pair .b { height: 9px; background: transparent; position: relative; }
+  .pair .b span { position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: 0 4px 4px 0; }
+  .pair .notes span { background: var(--notes-bar); }
+  .pair .views span { background: var(--accent); }
+  .pair .v { font-variant-numeric: tabular-nums; text-align: right; font-size: 13px; color: var(--ink-2); }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 22px; font: 500 13px/1.3 var(--sans); color: var(--ink-2); margin-bottom: 12px; }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .legend i { display: inline-block; width: 18px; height: 9px; border-radius: 0 3px 3px 0; }
+  .legend .k-notes { background: var(--notes-bar); }
+  .legend .k-views { background: var(--accent); }
+  .legend .k-mid { width: 1px; height: 14px; background: var(--ink); border-radius: 0; }
+
+  /* Verdict chips */
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    font: 650 12.5px/1 var(--sans);
+    padding: 6px 10px 6px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .chip svg { width: 9px; height: 9px; fill: currentColor; flex: none; }
+  .chip.up { color: var(--good); background: var(--good-bg); }
+  .chip.keep { color: var(--warn); background: var(--warn-bg); }
+  .chip.down { color: var(--bad); background: var(--bad-bg); }
+  .chip.flat { color: var(--ink-2); background: var(--neutral-bg); }
+
+  /* Title molds */
+  .molds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 26px; }
+  .mold {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 18px 20px 16px;
+    display: grid;
+    gap: 12px;
+    align-content: start;
+  }
+  .mold h3 { margin: 0; font: 650 12px/1.2 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .formula { font: 620 18px/1.35 var(--sans); color: var(--ink); text-wrap: balance; }
+  .formula b { font-weight: 620; color: var(--accent-ink); }
+  .mold ul { margin: 0; padding: 12px 0 0; list-style: none; display: grid; gap: 9px; border-top: 1px solid var(--rule); }
+  .mold li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: baseline; font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+  .mold li .v { font: 600 13px/1 var(--sans); font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
+
+  /* Two-list plan */
+  .plan { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+  .plan > div { border-top: 2px solid var(--ink); padding-top: 12px; display: grid; gap: 10px; align-content: start; }
+  .plan h3 { margin: 0; font: 700 15px/1.2 var(--sans); display: flex; align-items: center; gap: 8px; }
+  .plan ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
+  .plan li { font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+  .plan li::marker { color: var(--muted); }
+
+  /* Calendar */
+  .cal { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+  .cal li {
+    display: grid;
+    grid-template-columns: 128px minmax(0, 1fr) 210px;
+    gap: 22px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .when { font: 740 16px/1.15 var(--sans); text-transform: uppercase; letter-spacing: 0.02em; color: var(--ink); }
+  .when small { display: block; margin-top: 5px; font: 400 12.5px/1.3 var(--sans); text-transform: none; letter-spacing: 0; color: var(--muted); }
+  .what h3 { margin: 0 0 4px; font: 650 17px/1.3 var(--sans); text-wrap: balance; }
+  .what p { font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+  .what .pitch { font-style: italic; color: var(--ink); margin-top: 6px; }
+  .bench { font: 400 13px/1.45 var(--sans); color: var(--muted); display: grid; gap: 6px; align-content: start; }
+  .bench b { font-weight: 650; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .prio { display: inline-flex; align-items: center; gap: 7px; font: 650 12.5px/1 var(--sans); color: var(--ink); }
+  .prio svg { width: 11px; height: 11px; flex: none; }
+
+  /* Stop list */
+  .stop { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; border-top: 2px solid var(--ink); }
+  .stop li { padding: 14px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 4px; }
+  .stop h3 { margin: 0; font: 650 16px/1.3 var(--sans); }
+  .stop p { font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+
+  footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--rule-strong); display: grid; gap: 8px; }
+  footer p { font: 400 13px/1.55 var(--sans); color: var(--muted); max-width: 100ch; }
+
+  @media (max-width: 820px) {
+    .mast { grid-template-columns: minmax(0, 1fr); }
+    .molds, .plan, .stop { grid-template-columns: minmax(0, 1fr); }
+    .cal li { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  }
+
+  /* Barra de Bloomberg Línea y tipografía de la casa */
+  .bl-bar { background: var(--bar-bg); color: var(--bar-ink); border-bottom: 1px solid var(--bar-rule); }
+  .bl-bar-in { max-width: 1100px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 44px); }
+  .bl-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; padding-block: 16px 14px; }
+  .bl-mark { font: 700 clamp(22px, 2.8vw, 30px)/1 var(--sans); letter-spacing: -0.025em; color: var(--bar-ink); white-space: nowrap; }
+  .bl-mark span { color: var(--bar-accent); }
+  .bl-tag { font: 600 11.5px/1.3 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--bar-muted); }
+  .bl-nav { display: flex; gap: 24px; overflow-x: auto; padding-block: 11px 12px; border-top: 1px solid var(--bar-rule); scrollbar-width: none; }
+  .bl-nav::-webkit-scrollbar { display: none; }
+  .bl-nav a { color: var(--bar-ink); text-decoration: none; font: 500 14px/1.2 var(--sans); white-space: nowrap; }
+  .bl-nav a:hover { color: var(--bar-accent); }
+  .bl-nav a:focus-visible { outline: 2px solid var(--bar-accent); outline-offset: 3px; border-radius: 2px; }
+  .kicker, .eyebrow { font: 700 12px/1.2 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); }
+  h1 { font-family: var(--sans); font-weight: 600; font-size: clamp(34px, 5vw, 54px); line-height: 1.04; letter-spacing: -0.015em; color: var(--ink); max-width: 22ch; }
+  h2 { font-family: var(--sans); font-weight: 600; font-size: clamp(24px, 2.8vw, 32px); line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); }
+  .lede { font-family: var(--sans); font-size: clamp(18px, 1.9vw, 21px); line-height: 1.45; color: var(--ink-2); }
+  .byline { margin-top: 16px; font: 400 14px/1.4 var(--sans); color: var(--muted); max-width: none; }
+  .byline b { font-weight: 700; color: var(--ink); }
+  .bezel { height: 4px; margin-top: 28px; background: linear-gradient(90deg, var(--accent) 0 88px, var(--ink) 88px 100%); }
+
+  /* Guía de la semana */
+  .plan + .plan { margin-top: 16px; }
+  .sub-h { margin: 34px 0 14px; font: 700 13px/1.2 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
+  .semana { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .semana article { border-top: 2px solid var(--ink); padding-top: 12px; display: grid; gap: 8px; align-content: start; }
+  .semana p { font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+  .semana .lbl { font: 700 12px/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-ink); }
+  .semana .pitch { font: 600 17px/1.35 var(--sans); color: var(--ink); text-wrap: balance; }
+  .semana .ev { font: 400 13px/1.45 var(--sans); color: var(--muted); }
+  .probar { margin: 0; padding-left: 18px; display: grid; gap: 8px; max-width: 80ch; }
+  .probar li { font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+  .probar li::marker { color: var(--muted); }
+  @media (max-width: 820px) { .semana { grid-template-columns: minmax(0, 1fr); } }
+
+  /* Impacto de las propuestas (acotado a .imp) */
+  .imp .tiles { margin: 30px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
+  .imp .tiles > div { padding: 14px 18px 14px 0; border-bottom: 1px solid var(--rule); }
+  .imp .tiles dt { font: 600 11px/1.3 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .imp .tiles dd { margin: 6px 0 0; font: 700 30px/1.05 var(--sans); font-variant-numeric: tabular-nums; color: var(--ink); }
+  .imp .tiles dd small { display: block; margin-top: 5px; font: 400 13px/1.4 var(--sans); color: var(--muted); }
+  /* Chart */
+  .imp .legend { display: flex; flex-wrap: wrap; gap: 8px 22px; font: 500 13px/1.3 var(--sans); color: var(--ink-2); margin-bottom: 12px; }
+  .imp .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .imp .legend i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; }
+  .imp .legend .k-prop { background: var(--c-prop); }
+  .imp .legend .k-rev { background: var(--c-rev); }
+  .imp .legend .k-rest { background: var(--c-rest); }
+  .imp .legend .k-ma { width: 18px; height: 2px; background: var(--ink); border-radius: 0; }
+  .imp .legend .k-seo { background: var(--c-prop); }
+  .imp #chart .b-rest { fill: var(--c-rest); fill-opacity: .55; }
+  .imp #chart .b-seo { fill: var(--c-prop); fill-opacity: .9; }
+  .imp #chart .m-seo { fill: var(--c-prop); }
+  .imp #chart .ma { stroke: var(--ink); stroke-opacity: .45; }
+  .imp .chart-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 10px 8px; position: relative; }
+  .imp #chart { position: relative; width: 100%; min-height: 300px; touch-action: pan-y; }
+  .imp #chart svg { display: block; overflow: visible; }
+  .imp #chart .tick { font: 500 11.5px var(--sans); fill: var(--muted); font-variant-numeric: tabular-nums; }
+  .imp #chart .evnum { font: 700 11px var(--sans); fill: var(--ink); }
+  .imp #chart .anno { font: 500 11.5px var(--sans); fill: var(--muted); }
+  .imp .tip { position: absolute; top: 0; left: 0; pointer-events: none; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 6px; padding: 9px 11px; font: 400 12.5px/1.45 var(--sans); color: var(--ink-2); box-shadow: 0 6px 18px rgba(0,0,0,.12); min-width: 190px; }
+  .imp .tip[hidden] { display: none; }
+  .imp .tip b { color: var(--ink); font-weight: 650; }
+  .imp .tip .row { display: grid; grid-template-columns: 12px 1fr auto; gap: 8px; align-items: center; font-variant-numeric: tabular-nums; }
+  .imp .tip .row i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .imp .tip .tot { border-top: 1px solid var(--rule); margin-top: 5px; padding-top: 5px; }
+  .imp .events { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 10px 26px; }
+  .imp .events li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 10px; align-items: start; font: 400 14px/1.45 var(--sans); color: var(--ink-2); }
+  .imp .events .num { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--ink); font: 700 11.5px var(--sans); color: var(--ink); background: var(--surface); }
+  .imp .events b { color: var(--ink); font-weight: 650; }
+
+  /* Tables */
+  .imp .table-wrap { overflow-x: auto; border-top: 2px solid var(--ink); }
+  .imp table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 14.5px; }
+  .imp thead th { font: 600 11px/1.3 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 12px 14px 10px 0; border-bottom: 1px solid var(--rule-strong); vertical-align: bottom; }
+  .imp tbody th, .imp tbody td { padding: 13px 14px 13px 0; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+  .imp th.num, .imp td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .imp tbody th { font-weight: 650; color: var(--ink); }
+  .imp tr.muted th, .imp tr.muted td { color: var(--muted); background: var(--neutral-bg); }
+  .imp tr.muted th { padding-left: 10px; }
+  .imp .t-ab { min-width: 560px; }
+  .imp .t-ab thead th.num { white-space: normal; }
+  .imp .t-ab tbody th { white-space: nowrap; }
+  .imp .t-ab tbody th .sub { display: block; margin-top: 3px; font-weight: 400; font-size: 12.5px; }
+  .imp .t-prop { min-width: 900px; }
+  .imp .t-prop td.when { font: 650 14px/1.2 var(--sans); white-space: nowrap; color: var(--ink); }
+  .imp .t-prop td.when small { display: block; margin-top: 4px; font-weight: 400; font-size: 12.5px; color: var(--muted); }
+  .imp .tipo { display: inline-flex; align-items: center; gap: 7px; font: 650 12px/1 var(--sans); color: var(--ink); }
+  .imp .tipo i { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+  .imp .tipo.k-e i { background: var(--c-prop); }
+  .imp .tipo.k-r i { background: var(--c-rev); }
+  .imp .tipo.k-a i { background: transparent; border: 2px solid var(--c-rev); }
+  .imp .que { margin-top: 6px; font: 400 14px/1.45 var(--serif); color: var(--ink-2); max-width: 36ch; }
+  .imp .nota { font: 500 14.5px/1.4 var(--sans); color: var(--ink); max-width: 44ch; }
+  .imp .meta { display: block; margin-top: 4px; font: 400 12.5px/1.3 var(--sans); color: var(--muted); }
+  .imp td.res { min-width: 10em; max-width: 13em; }
+  .imp td.res .big { display: block; font: 700 18px/1.1 var(--sans); font-variant-numeric: tabular-nums; color: var(--ink); }
+  .imp td.res small { display: block; margin-top: 3px; font: 400 12.5px/1.35 var(--sans); color: var(--muted); }
+  .imp .t-prop td:nth-child(2) { min-width: 14em; }
+  .imp .rel { display: inline-flex; align-items: center; font: 650 12.5px/1 var(--sans); padding: 6px 10px; border-radius: 999px; white-space: nowrap; }
+  .imp .rel.hi { color: var(--good); background: var(--good-bg); }
+  .imp .rel.up { color: var(--good); background: transparent; border: 1.5px solid var(--good); }
+  .imp .rel.eq { color: var(--ink-2); background: var(--neutral-bg); }
+  .imp .rel.lo { color: var(--bad); background: var(--bad-bg); }
+  .imp .rel.na { color: var(--muted); background: transparent; border: 1px dashed var(--rule-strong); }
+
+  .imp .compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .imp .compare > div { border-top: 2px solid var(--ink); padding-top: 12px; display: grid; gap: 8px; align-content: start; }
+  .imp .compare h3 { margin: 0; font: 650 12px/1.2 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .imp .vs { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; font-family: var(--sans); }
+  .imp .vs .a { font: 700 34px/1 var(--sans); color: var(--accent-ink); font-variant-numeric: tabular-nums; }
+  .imp .vs .b { font: 700 34px/1 var(--sans); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .imp .vs span { font: 400 13.5px/1.35 var(--sans); color: var(--muted); }
+  .imp .compare p { font-size: 15.5px; color: var(--ink-2); }
+  .imp blockquote { margin: 26px 0 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); max-width: 60ch; }
+  .imp blockquote p { font: italic 400 20px/1.45 var(--serif); color: var(--ink); }
+  .imp blockquote footer { margin-top: 6px; font: 400 13px/1.4 var(--sans); color: var(--muted); }
+
+  .imp .caveats { margin: 0; padding-left: 18px; display: grid; gap: 10px; max-width: 80ch; }
+  .imp .caveats li { font-size: 15.5px; line-height: 1.55; color: var(--ink-2); }
+  .imp .caveats li::marker { color: var(--muted); }
+
+
+  @media (max-width: 820px) {
+    .imp .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .imp .compare { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .imp .t-prop, .imp .t-prop tbody { display: block; min-width: 0; }
+    .imp .t-prop thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .imp .t-prop tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+    .imp .t-prop tbody td { display: block; padding: 0; border: 0; }
+    .imp .t-prop td.when { grid-column: 1 / -1; display: flex; gap: 8px; align-items: baseline; }
+    .imp .t-prop td.when small { display: inline; margin: 0; }
+    .imp .t-prop td:nth-child(2), .imp .t-prop td:nth-child(3) { grid-column: 1 / -1; }
+    .imp .t-prop .que, .imp .t-prop .nota { max-width: none; }
+  }
+  .imp .tiles { margin: 4px 0 30px; }
+  .imp tbody th, .imp tbody td { vertical-align: top; }
+  .imp .t-prop td.when, .imp .t-prop td.when small { text-transform: none; letter-spacing: 0; }
+  .imp blockquote footer { border: 0; padding: 0; display: block; }
+  .imp .legend .k-ref { width: 1px; height: 16px; background: var(--ink); border-radius: 0; }
+  .imp .nb { margin: 0 0 30px; }
+  .imp .nb-list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+  .imp .nb-row { display: grid; grid-template-columns: minmax(0, 17em) minmax(0, 1fr) 9.5em; gap: 6px 16px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); }
+  .imp .nb-lab { font: 600 14px/1.3 var(--sans); color: var(--ink); }
+  .imp .nb-lab small { display: block; margin-top: 2px; font: 400 12.5px/1.3 var(--sans); color: var(--muted); }
+  .imp .nb .bar { height: 16px; }
+  .imp .nb .bar .fill.k-e { background: var(--c-prop); }
+  .imp .nb .bar .fill.k-r { background: var(--c-rev); }
+  .imp .nb-val { font: 700 15px/1.1 var(--sans); font-variant-numeric: tabular-nums; color: var(--ink); text-align: right; white-space: nowrap; }
+  .imp .nb-val small { display: block; margin-top: 2px; font: 400 12px/1.3 var(--sans); color: var(--muted); }
+  .imp .nb figcaption { margin-top: 10px; }
+  .imp .t-sem { min-width: 560px; }
+  .imp .t-vida { min-width: 640px; }
+  .imp .t-vida thead th.num { white-space: normal; }
+  .imp .t-vida tbody th { font: 500 14px/1.35 var(--sans); color: var(--ink); max-width: 30em; }
+  .imp .t-vida tbody th small { display: block; margin-top: 3px; font: 400 12.5px/1.3 var(--sans); color: var(--muted); }
+  .imp .t-vida td small { color: var(--muted); font-size: 12.5px; }
+  .imp .t-vida tr.top th, .imp .t-vida tr.top td { background: var(--accent-track); }
+  .imp .legend .k-a { background: transparent; border: 2px solid var(--c-rev); box-sizing: border-box; }
+  .imp .nb .bar .fill.k-a { background: transparent; border: 2px solid var(--c-rev); box-sizing: border-box; }
+  .imp .t-sem thead th.num { white-space: normal; }
+  .imp .t-sem tbody th { white-space: nowrap; }
+  .imp .t-sem tr.top th, .imp .t-sem tr.top td { font-weight: 650; color: var(--ink); background: var(--accent-track); }
+  .parte { margin: clamp(52px, 7vw, 80px) 0 0; padding-top: 12px; border-top: 4px solid var(--ink); display: flex; align-items: center; gap: 10px; font: 700 13px/1.2 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); max-width: none; }
+  .parte span { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--bar-bg); font-size: 12.5px; letter-spacing: 0; }
+  .parte + section, .parte + .imp > section:first-child { margin-top: 28px; }
+  @media (max-width: 640px) {
+    .imp .nb-row { grid-template-columns: minmax(0, 1fr) auto; }
+    .imp .nb-lab { grid-column: 1 / -1; }
+  }
+
+.wkchart{margin:18px 0 6px}
+.wk{display:grid;grid-template-columns:62px 1fr 64px;align-items:center;gap:10px;padding:4px 0;font-size:13.5px}
+.wk-l{color:#6b6b6b;font-size:12.5px}
+.wk-b{background:#f0f0f0;height:14px;border-radius:2px;overflow:hidden}
+.wk-b i{display:block;height:100%;background:#36BF58}
+.wk-n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.var{font-weight:700;font-variant-numeric:tabular-nums}
+.var.sube{color:#1d7a37}.var.baja{color:#b3261e}
+.clave{border-left:3px solid #36BF58;background:#f7fbf8;padding:11px 14px;margin:14px 0 16px;font-weight:600;line-height:1.45}
+@media (max-width:620px){.wk{grid-template-columns:52px 1fr 56px;gap:8px;font-size:12.5px}}
+</style>
+</head>
+<body>
+<div class="bl-bar"><div class="bl-bar-in">
+  <div class="bl-top"><span class="bl-mark">Bloomberg <span>Línea</span></span><span class="bl-tag">Uso interno · SEO</span></div>
+  <nav class="bl-nav" aria-label="Secciones">
+    <a href="#s-guia">Guía</a><a href="#s-semana">La semana</a><a href="#s-foto">La foto</a>
+    <a href="#s-temas">Temas</a><a href="#s-titulares">Titulares</a><a href="#s-mes">Reparto</a>
+    <a href="#s-cal">Calendario</a><a href="#s-ever">Vida larga</a><a href="#s-gsc">Búsquedas</a>
+    <a href="#s-stop">Qué dejar</a>
+  </nav>
+</div></div>
+<main class="page">
+<header>
+  <div class="mast">
+    <div>
+      <p class="kicker">Central Desk · Guía de SEO</p>
+      <h1>Qué rinde en las notas de Juan Pablo Álvarez</h1>
+      <p class="lede">Todo lo que sigue sale de sus notas publicadas, de sus vistas en GA4 y de sus clics de Discover
+      y de búsqueda en Search Console, entre el 20 de julio de 2026 y el 11 de octubre de 2026. Las comparaciones de semana contra
+      semana cierran el 11 de octubre de 2026, que es el último domingo completo. No hay opiniones sobre titulares: hay lo que
+      pasó con los suyos.</p>
+      <p class="byline">Por <b>SEO</b> · actualizado el 16 de octubre de 2026</p>
+    </div>
+    <dl class="spec"><div><dt>Periodo</dt><dd>12 semanas<small>del 20 jul al 11 oct de 2026</small></dd></div><div><dt>Notas de Juan</dt><dd>143<small>11,9 por semana</small></dd></div><div><dt>Mediana por nota</dt><dd>237 vistas<small>en sus primeros 7 días</small></dd></div><div><dt>Superan 1.000 vistas</dt><dd>11%<small>en su primera semana</small></dd></div><div><dt>Llegan por Discover</dt><dd>56%<small>de sus clics desde Google</small></dd></div><div><dt>Notas con SEO</dt><dd>4<small>propuestas aplicadas</small></dd></div></dl>
+  </div>
+  <div class="bezel" aria-hidden="true"></div>
+</header>
+
+<p class="parte"><span>1</span>La guía de la semana</p>
+<section aria-labelledby="s-guia">
+  <div class="sec-head">
+    <p class="eyebrow">Hoja de ruta · semana del 11 de octubre</p>
+    <h2 id="s-guia">Lo que aplicamos desde ya</h2>
+    <p>Lo que funciona y lo que no en sus notas. Se actualiza cada lunes con los datos de la semana: lo que deja de
+    rendir sale de aquí.</p>
+  </div>
+  <div class="plan">
+    <div><h3><span class="chip up"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 9h10L5 1z"/></svg>Titula así</span></h3><ul><li><b>Pregunta o «qué/cuánto» al inicio</b>: mediana de 346 vistas contra 220 sin ella (24 de las 137 notas que ya cumplieron su semana). La mejor con esa pieza: <b>«Qué países de Latinoamérica están mejor posicionados en la carrera de la IA, según Oxford»</b> (3.077).</li><li><b>Dos puntos en la cabeza</b>: mediana de 313 vistas contra 225 sin ella (29 de las 137 notas que ya cumplieron su semana). La mejor con esa pieza: <b>«Pruebas PISA: resultados de 13 países revelan el rezago educativo de América Latina»</b> (3.037).</li><li><b>La marca o el activo</b>: mediana de 305 vistas contra 227 sin ella (19 de las 137 notas que ya cumplieron su semana). La mejor con esa pieza: <b>«Estos son los precios objetivo de Wall Street para las acciones de MercadoLibre previo a su balance»</b> (1.467).</li><li><b>Entre 80–94 caracteres</b>: mediana de 273 vistas en 76 notas, la franja que mejor le rinde.</li></ul></div>
+    <div><h3><span class="chip flat"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 4h10v2H0z"/></svg>Antes de publicar</span></h3><ul><li><b>¿Esto se busca?</b> Si el tema tiene consulta en Google, el titular tiene que llevar la palabra que la gente escribe. De sus 166 notas con tráfico, solo 71 traen más búsqueda que Discover.</li><li><b>¿El titular se entiende sin leer la nota?</b> En Discover no hay búsqueda previa: es lo único que ve el lector. Sus tres mejores de Discover suman 5.610 clics.</li><li><b>¿Está la cifra y está la fuente?</b> Son las dos piezas que más suben la mediana en su corpus.</li><li><b>¿Hay otra nota suya del mismo tema esta semana?</b> Publica 11,9 notas por semana: el segundo ángulo del mismo tema se come al primero.</li></ul></div>
+    <div><h3><span class="chip up"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 9h10L5 1z"/></svg>Sube</span></h3><ul><li><b>Riesgo país e inflación de la región</b>: mediana de 1.216 vistas en 7 notas.</li><li><b>Argentina: Milei, economía y encuestas</b>: mediana de 465 vistas en 9 notas.</li><li><b>La Fed, tasas y bonos del Tesoro</b>: mediana de 325 vistas en 6 notas.</li></ul></div>
+    <div><h3><span class="chip down"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 1h10L5 9z"/></svg>Baja</span></h3><ul><li><b>Argentina: deuda, bonos y riesgo electoral</b>: 40 notas y mediana de 264 vistas.</li><li><b>Cripto</b>: 9 notas y mediana de 152 vistas.</li><li><b>Chile, Perú y Bolivia</b>: 21 notas y mediana de 105 vistas.</li></ul></div>
+  </div>
+  <div class="semana"><h3>Tres titulares para reescribir esta semana</h3><ul><li><b>«mercadolibre triplicara su capacidad logistica en chile para 2027 y promete 2500 empleos nuevos»</b>: 91.256 impresiones y 34 clics (0,04%). Google ya la muestra y casi nadie la abre: el titular no dice lo que se busca.</li><li><b>«pensabas pagar us200 por chatgpt pro openai suspende nuevas suscripciones por demanda de astra»</b>: 63.710 impresiones y 289 clics (0,45%). Google ya la muestra y casi nadie la abre: el titular no dice lo que se busca.</li><li><b>«los datos que hay que conocer de anthropic fabricante de claude antes de su llegada a wall street»</b>: 33.740 impresiones y 15 clics (0,04%). Google ya la muestra y casi nadie la abre: el titular no dice lo que se busca.</li></ul></div>
+  <div class="probar"><h3>A probar en las próximas semanas</h3><ul><li><b>Un titular de búsqueda donde hoy solo hay Discover.</b> El 56% de sus clics de Google vienen de Discover, que se agota en dos días. Probar el mismo tema con la palabra buscada al principio del titular y medir si aparece en búsqueda.</li><li><b>Menos Chile, Perú y Bolivia.</b> Son 21 notas con mediana de 105 vistas. Bajar a la mitad y mover ese tiempo a Riesgo país e inflación de la región, que tiene mediana de 1.216.</li></ul></div>
+</section>
+
+
+
+<p class="parte"><span>3</span>Los datos detrás de la guía</p>
+<section aria-labelledby="s-foto">
+  <div class="sec-head">
+    <p class="eyebrow">La foto</p>
+    <h2 id="s-foto">Diez tablas de la región le dejan más clics que sus 48 notas de Wall Street</h2>
+    <p>En el Central Desk, Google reparte muy distinto de como reparte en el resto del sitio, y él no está donde está
+    el volumen.</p>
+  </div>
+  <p class="clave">Su motor es <b>Discover</b>: el 53% de sus clics de Google. Pero dentro de la sección solo aporta el 100% de la búsqueda y el 100% del Discover.</p>
+  <p>Los tres motores de Google por los que llega su gente, con los clics que trajo cada uno:</p><div class="table-wrap"><table><thead><tr><th>Motor de Google</th><th>Clics</th><th>Parte</th><th>Impresiones</th><th>Notas</th></tr></thead><tbody><tr><td>Búsqueda</td><td><div class="barline"><div class="bar" title="12.001 clics" style="--w:80.1%"><span class="fill"></span></div><span class="val">12.001</span></div></td><td><b>43%</b></td><td>810.846</td><td>102</td></tr><tr><td>Discover</td><td><div class="barline"><div class="bar" title="14.980 clics" style="--w:100.0%"><span class="fill"></span></div><span class="val">14.980</span></div></td><td><b>53%</b></td><td>405.191</td><td>97</td></tr><tr><td>Google News</td><td><div class="barline"><div class="bar" title="1.044 clics" style="--w:7.0%"><span class="fill"></span></div><span class="val">1.044</span></div></td><td><b>4%</b></td><td>46.346</td><td>81</td></tr></tbody></table></div><p class="nota">Su motor es <b>Discover</b>, con el 53% de sus clics de Google. Después la búsqueda de Google (43%) y Google News (4%).</p>
+  <div class="table-wrap"><table><thead><tr><th>Canal</th><th>Toda la sección</th><th>De él</th><th>Su parte</th></tr></thead><tbody><tr><td>Vistas (GA4)</td><td>3.033.189</td><td>79.652</td><td>3%</td></tr><tr><td>Clics de Discover</td><td>14.980</td><td>14.980</td><td><b>100%</b></td></tr><tr><td>Clics de búsqueda</td><td>12.001</td><td>12.001</td><td><b>100%</b></td></tr></tbody></table></div>
+  <div class="plan">
+    <div><h3><span class="chip up"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 9h10L5 1z"/></svg>Le funciona</span></h3><ul><li><b>Qué países de Latinoamérica están mejor posicionados en la carrera de la IA, según Oxford</b>: 3.500 clics de Discover y 147 de búsqueda.</li><li><b>Acciones del S&amp;P 500 con potencial en septiembre de 2026: qué sugieren los expertos</b>: 1.073 clics de Discover y 485 de búsqueda.</li><li><b>Pruebas PISA: resultados de 13 países revelan el rezago educativo de América Latina</b>: 1.037 clics de Discover y 1.823 de búsqueda.</li></ul></div>
+    <div><h3><span class="chip down"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 1h10L5 9z"/></svg>No le funciona</span></h3><ul><li><b>Menos choques, pero reparaciones más caras: así será el futuro de los seguros automotores</b>: 0 vistas en siete días.</li><li><b>Grupo BID prevé destinar hasta US$5.000 millones a Uruguay entre 2026 y 2030</b>: 27 vistas en siete días.</li><li><b>Ajustes de tasas serán limitados y no afectarán a activos de riesgo: Lombard Odier</b>: 33 vistas en siete días.</li></ul></div>
+  </div>
+  <p class="nota">Es el 3% de las vistas de la sección y el
+  100% de su Discover, pero solo el
+  100% de sus clics de búsqueda. Ahí está el espacio que no ocupa.</p>
+</section>
+
+
+
+<section aria-labelledby="s-temas">
+  <div class="sec-head">
+    <p class="eyebrow">Temas</p>
+    <h2 id="s-temas">Dónde rinde cada nota</h2>
+    <p>Sus 166 notas con tráfico en la ventana, por lo que tratan. La mediana es por nota: dice cuánto rinde
+    una nota típica de ese tema, no cuánto suma el tema entero.</p>
+  </div>
+  <div class="table-wrap"><table class="t-topics"><thead><tr><th>Tema</th><th>Notas</th><th>Mediana por nota</th><th>Vistas</th><th>Canal</th><th>Qué hacer</th></tr></thead><tbody><tr><th scope="row">Riesgo país e inflación de la región<span class="how"><b>«Pruebas PISA: resultados de 13 países revelan el rezago educativo de América Latina»</b> (3.722); <b>«Así viene la inflación en América Latina, país por país: los números de agosto 2026»</b> (2.236)</span></th><td class="num">7</td><td><div class="barline"><div class="bar" title="Riesgo país e inflación de la región: mediana de 1.216 vistas" style="--w:100.0%"><span class="fill"></span></div><span class="val">1.216</span></div></td><td class="num">10.207</td><td class="chan">Búsqueda</td><td><span class="chip up"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 9h10L5 1z"/></svg>Subir</span></td></tr><tr><th scope="row">Argentina: Milei, economía y encuestas<span class="how"><b>«AtlasIntel: Aprobación de Javier Milei anota leve mejora en encuesta clave de agosto»</b> (2.430); <b>«Desaprobación de Milei sube al 62,4% según una encuesta de AtlasIntel para Bloomberg»</b> (1.858)</span></th><td class="num">9</td><td><div class="barline"><div class="bar" title="Argentina: Milei, economía y encuestas: mediana de 465 vistas" style="--w:38.2%"><span class="fill"></span></div><span class="val">465</span></div></td><td class="num">6.944</td><td class="chan">Búsqueda</td><td><span class="chip up"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 9h10L5 1z"/></svg>Subir</span></td></tr><tr><th scope="row">La Fed, tasas y bonos del Tesoro<span class="how"><b>«La Fed podría iniciar esta semana su cuarto ciclo de subida de tasas en este siglo»</b> (470); <b>«Estos son los 7 principios que guiarán la política monetaria de la Fed en el mandato de Warsh»</b> (435)</span></th><td class="num">6</td><td><div class="barline"><div class="bar" title="La Fed, tasas y bonos del Tesoro: mediana de 325 vistas" style="--w:26.7%"><span class="fill"></span></div><span class="val">325</span></div></td><td class="num">1.736</td><td class="chan">Búsqueda</td><td><span class="chip up"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 9h10L5 1z"/></svg>Subir</span></td></tr><tr><th scope="row">Inteligencia artificial y tecnología<span class="how"><b>«¿Pensabas pagar US$200 por ChatGPT Pro? OpenAI suspende nuevas suscripciones por demanda de Astra»</b> (393); <b>«Del rally de 76% a una caída de más de 11%: qué pasó con los semiconductores»</b> (183)</span></th><td class="num">2</td><td><div class="barline"><div class="bar" title="Inteligencia artificial y tecnología: mediana de 288 vistas" style="--w:23.7%"><span class="fill"></span></div><span class="val">288</span></div></td><td class="num">576</td><td class="chan">Búsqueda</td><td><span class="chip up"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 9h10L5 1z"/></svg>Subir</span></td></tr><tr><th scope="row">Wall Street: acciones y recomendaciones<span class="how"><b>«Acciones del S&amp;P 500 con potencial en septiembre de 2026: qué sugieren los expertos»</b> (1.898); <b>«Estos son los precios objetivo de Wall Street para las acciones de MercadoLibre previo a su balance»</b> (1.483)</span></th><td class="num">27</td><td><div class="barline"><div class="bar" title="Wall Street: acciones y recomendaciones: mediana de 277 vistas" style="--w:22.8%"><span class="fill"></span></div><span class="val">277</span></div></td><td class="num">9.960</td><td class="chan">Discover</td><td><span class="chip up"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 9h10L5 1z"/></svg>Subir</span></td></tr><tr><th scope="row">Argentina: deuda, bonos y riesgo electoral<span class="how"><b>«Así cerró el riesgo país en Latinoamérica en el mes de julio»</b> (2.119); <b>«El mercado eleva el riesgo de default para el gobierno que suceda a Milei»</b> (1.337)</span></th><td class="num">40</td><td><div class="barline"><div class="bar" title="Argentina: deuda, bonos y riesgo electoral: mediana de 264 vistas" style="--w:21.7%"><span class="fill"></span></div><span class="val">264</span></div></td><td class="num">16.598</td><td class="chan">Búsqueda</td><td><span class="chip down"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 1h10L5 9z"/></svg>Bajar</span></td></tr><tr><th scope="row">Otros<span class="how"><b>«El doble riesgo para Latinoamérica, por su dependencia de China»</b> (13.318); <b>«Qué países de Latinoamérica están mejor posicionados en la carrera de la IA, según Oxford»</b> (3.102)</span></th><td class="num">40</td><td><div class="barline"><div class="bar" title="Otros: mediana de 229 vistas" style="--w:18.8%"><span class="fill"></span></div><span class="val">229</span></div></td><td class="num">27.861</td><td class="chan">Discover</td><td><span class="chip flat"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 4h10v2H0z"/></svg>Sostener</span></td></tr><tr><th scope="row">Energía, minería y Vaca Muerta<span class="how"><b>«Bancos centrales de Latinoamérica mantendrán cautela, pese a menor presión en el petróleo y alivio financiero»</b> (304); <b>«El impacto de Vaca Muerta: calculan que explica más de un tercio de la masa salarial en Neuquén»</b> (196)</span></th><td class="num">5</td><td><div class="barline"><div class="bar" title="Energía, minería y Vaca Muerta: mediana de 170 vistas" style="--w:14.0%"><span class="fill"></span></div><span class="val">170</span></div></td><td class="num">978</td><td class="chan">Discover</td><td><span class="chip down"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 1h10L5 9z"/></svg>Bajar</span></td></tr><tr><th scope="row">Cripto<span class="how"><b>«Bitcoin se acerca a los US$80.000: ¿qué está impulsando el repunte?»</b> (410); <b>«Estas son las 6 criptomonedas que dejarán de aparecer en Binance en agosto»</b> (306)</span></th><td class="num">9</td><td><div class="barline"><div class="bar" title="Cripto: mediana de 152 vistas" style="--w:12.5%"><span class="fill"></span></div><span class="val">152</span></div></td><td class="num">1.472</td><td class="chan">Búsqueda</td><td><span class="chip down"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 1h10L5 9z"/></svg>Bajar</span></td></tr><tr><th scope="row">Chile, Perú y Bolivia<span class="how"><b>«¿Qué incluye la megarreforma económica de Kast en Chile? Los principales cambios»</b> (929); <b>«¿Cuándo y cuánto aumentaría el sueldo mínimo en Perú? Esto dice el Gobierno de Keiko Fujimori»</b> (420)</span></th><td class="num">21</td><td><div class="barline"><div class="bar" title="Chile, Perú y Bolivia: mediana de 105 vistas" style="--w:8.6%"><span class="fill"></span></div><span class="val">105</span></div></td><td class="num">3.320</td><td class="chan">Búsqueda</td><td><span class="chip down"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 1h10L5 9z"/></svg>Bajar</span></td></tr></tbody></table></div>
+  <p class="nota"><b>Los dos temas en los que más publica son los que menos rinden por nota.</b>
+  Chile, Perú y Bolivia: 21 notas, mediana de 105 vistas.
+  Cripto: 9 notas, mediana de 152. Juntos,
+  30 de sus 166 notas.</p>
+</section>
+
+<section aria-labelledby="s-titulares">
+  <div class="sec-head">
+    <p class="eyebrow">Titulares</p>
+    <h2 id="s-titulares">Las piezas que cambian el resultado</h2>
+    <p>Medido sobre sus 137 notas de la ventana: la mediana de vistas de las que llevan cada pieza contra
+    las que no.</p>
+  </div>
+  <div class="table-wrap"><table class="t-hooks"><thead><tr><th>Pieza del titular</th><th>Notas con ella</th><th>Mediana con la pieza</th><th>Mediana sin ella</th></tr></thead><tbody><tr><th scope="row">Pregunta o «qué/cuánto» al inicio<span class="how">Su mejor ejemplo: <b>«Qué países de Latinoamérica están mejor posicionados en la carrera de la IA, según Oxford»</b> (3.077 vistas)</span></th><td class="num">24</td><td><div class="barline"><div class="bar" title="con la pieza: mediana de 346" style="--w:100.0%;--mid:63.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">346</span></div></td><td class="num">220</td></tr><tr><th scope="row">Dos puntos en la cabeza<span class="how">Su mejor ejemplo: <b>«Pruebas PISA: resultados de 13 países revelan el rezago educativo de América Latina»</b> (3.037 vistas)</span></th><td class="num">29</td><td><div class="barline"><div class="bar" title="con la pieza: mediana de 313" style="--w:90.6%;--mid:65.1%"><span class="fill"></span><span class='mid'></span></div><span class="val">313</span></div></td><td class="num">225</td></tr><tr><th scope="row">La marca o el activo<span class="how">Su mejor ejemplo: <b>«Estos son los precios objetivo de Wall Street para las acciones de MercadoLibre previo a su balance»</b> (1.467 vistas)</span></th><td class="num">19</td><td><div class="barline"><div class="bar" title="con la pieza: mediana de 305" style="--w:88.3%;--mid:65.6%"><span class="fill"></span><span class='mid'></span></div><span class="val">305</span></div></td><td class="num">227</td></tr><tr><th scope="row">Un país en el titular<span class="how">Su mejor ejemplo: <b>«Qué países de Latinoamérica están mejor posicionados en la carrera de la IA, según Oxford»</b> (3.077 vistas)</span></th><td class="num">61</td><td><div class="barline"><div class="bar" title="con la pieza: mediana de 212" style="--w:61.4%;--mid:74.4%"><span class="fill"></span><span class='mid'></span></div><span class="val">212</span></div></td><td class="num">257</td></tr><tr><th scope="row">La casa de análisis en el titular<span class="how">Su mejor ejemplo: <b>«Qué países de Latinoamérica están mejor posicionados en la carrera de la IA, según Oxford»</b> (3.077 vistas)</span></th><td class="num">21</td><td><div class="barline"><div class="bar" title="con la pieza: mediana de 192" style="--w:55.6%;--mid:73.1%"><span class="fill"></span><span class='mid'></span></div><span class="val">192</span></div></td><td class="num">253</td></tr><tr><th scope="row">Con cifra, monto o porcentaje<span class="how">Su mejor ejemplo: <b>«Desaprobación de Milei sube al 62,4% según una encuesta de AtlasIntel para Bloomberg»</b> (1.594 vistas)</span></th><td class="num">20</td><td><div class="barline"><div class="bar" title="con la pieza: mediana de 181" style="--w:52.2%;--mid:73.8%"><span class="fill"></span><span class='mid'></span></div><span class="val">181</span></div></td><td class="num">255</td></tr></tbody></table></div>
+  <h3>Las fórmulas que ya le funcionaron</h3>
+  <div class="molds"><div class="mold"><h3>La recomendación con la casa que la firma</h3><p class="formula">Quién lo dice, en el titular. Es la pieza que más le sube el CTR y la que SEO le pidió añadir en octubre.</p><p class="ev"><b>«Acciones del S&amp;P 500 con potencial en septiembre de 2026: qué sugieren los expertos»</b> — 1.898 vistas, 1.073 de Discover y 485 de búsqueda. 22 notas suyas con esta forma, mediana de 227.</p></div><div class="mold"><h3>En qué invertir, con el sector</h3><p class="formula">La pregunta de cartera con el sector delante. Es su fórmula más repetida en Wall Street.</p><p class="ev"><b>«Acciones del S&amp;P 500 con potencial en septiembre de 2026: qué sugieren los expertos»</b> — 1.898 vistas, 1.073 de Discover y 485 de búsqueda. 8 notas suyas con esta forma, mediana de 215.</p></div><div class="mold"><h3>El dato de la región, país por país</h3><p class="formula">El cuadro comparado de América Latina. Es lo que más Discover le trae, y lo que más se repite cada mes.</p><p class="ev"><b>«Qué países de Latinoamérica están mejor posicionados en la carrera de la IA, según Oxford»</b> — 3.102 vistas, 3.500 de Discover y 147 de búsqueda. 15 notas suyas con esta forma, mediana de 1.017.</p></div><div class="mold"><h3>La cifra del rally o la caída</h3><p class="formula">El movimiento con su número y el periodo. Funciona en cripto y en acciones.</p><p class="ev"><b>«¿La caída del riesgo país argentino generará una ola de salidas a la bolsa? Esto ven analistas»</b> — 1.017 vistas, 0 de Discover y 0 de búsqueda. 7 notas suyas con esta forma, mediana de 239.</p></div><div class="mold"><h3>Qué pasa con la deuda argentina</h3><p class="formula">El bono, el riesgo y la fecha. Es su nicho y nadie más lo cubre con esa frecuencia.</p><p class="ev"><b>«El mercado eleva el riesgo de default para el gobierno que suceda a Milei»</b> — 1.337 vistas, 78 de Discover y 0 de búsqueda. 14 notas suyas con esta forma, mediana de 217.</p></div></div>
+  <div class="table-wrap"><table><thead><tr><th>Largo del titular</th><th>Notas</th><th>Mediana</th></tr></thead><tbody><tr><td>60–79</td><td>35</td><td>183</td></tr><tr><td>80–94</td><td>76</td><td>273</td></tr><tr><td>95–130</td><td>23</td><td>220</td></tr></tbody></table></div>
+</section>
+
+<section aria-labelledby="s-linea">
+  <div class="sec-head">
+    <p class="eyebrow">La línea diaria</p>
+    <h2 id="s-linea">Sus vistas, día a día, desde el 20 de julio</h2>
+    <p>Cada punto es un día. Los tres picos señalados son las notas que los explican.
+    Son <b>vistas de GA4</b>: entran todas, por el canal que sea. No separa búsqueda, Discover y News, porque
+    Search Console se bajó por página y no por fecha.</p>
+  </div>
+  <div class="imp"><div class="legend"><span><i class="k-seo"></i>Notas con SEO</span><span><i class="k-rest"></i>Resto de sus notas</span><span><i class="k-ma"></i>Promedio de 7 días</span></div><div class="chart-card"><div id="chart" style="min-height:0"><svg viewBox="0 0 980 330" role="img" aria-label="Vistas diarias, con el aporte de las notas con SEO"><line x1="46" x2="968" y1="304.0" y2="304.0" stroke="currentColor" stroke-opacity=".12"/><text class="tick" x="38" y="308.0" text-anchor="end">0</text><line x1="46" x2="968" y1="159.0" y2="159.0" stroke="currentColor" stroke-opacity=".12"/><text class="tick" x="38" y="163.0" text-anchor="end">2.356</text><line x1="46" x2="968" y1="14.0" y2="14.0" stroke="currentColor" stroke-opacity=".12"/><text class="tick" x="38" y="18.0" text-anchor="end">4.712</text><path d="M46.0,304.0 L46.0,260.8 L57.1,243.2 L68.2,268.1 L79.3,291.8 L90.4,294.7 L101.5,300.2 L112.7,291.6 L123.8,282.8 L134.9,291.0 L146.0,277.0 L157.1,289.7 L168.2,296.3 L179.3,303.1 L190.4,302.8 L201.5,260.1 L212.6,112.7 L223.7,192.5 L234.8,265.0 L246.0,242.7 L257.1,245.3 L268.2,249.2 L279.3,216.9 L290.4,190.3 L301.5,253.8 L312.6,274.9 L323.7,265.0 L334.8,276.5 L345.9,289.4 L357.0,259.7 L368.1,200.8 L379.3,208.9 L390.4,254.7 L401.5,213.2 L412.6,270.3 L423.7,237.4 L434.8,122.4 L445.9,14.0 L457.0,258.9 L468.1,278.7 L479.2,281.2 L490.3,295.3 L501.4,273.5 L512.6,215.4 L523.7,261.4 L534.8,268.6 L545.9,281.0 L557.0,264.1 L568.1,253.0 L579.2,241.3 L590.3,236.1 L601.4,93.4 L612.5,186.0 L623.6,252.9 L634.7,228.6 L645.9,266.2 L657.0,281.9 L668.1,241.8 L679.2,179.6 L690.3,239.1 L701.4,237.0 L712.5,251.1 L723.6,291.2 L734.7,284.7 L745.8,223.1 L756.9,242.6 L768.0,218.3 L779.2,206.6 L790.3,230.6 L801.4,214.5 L812.5,207.9 L823.6,245.8 L834.7,218.3 L845.8,249.7 L856.9,253.4 L868.0,254.0 L879.1,187.6 L890.2,201.5 L901.3,229.3 L912.5,263.0 L923.6,272.4 L934.7,283.3 L945.8,289.8 L956.9,296.7 L968.0,294.6 L968.0,304.0 Z" class="b-rest"/><path d="M46.0,304.0 L46.0,304.0 L57.1,304.0 L68.2,304.0 L79.3,304.0 L90.4,304.0 L101.5,304.0 L112.7,304.0 L123.8,304.0 L134.9,304.0 L146.0,304.0 L157.1,304.0 L168.2,304.0 L179.3,304.0 L190.4,304.0 L201.5,304.0 L212.6,304.0 L223.7,304.0 L234.8,304.0 L246.0,304.0 L257.1,304.0 L268.2,304.0 L279.3,304.0 L290.4,304.0 L301.5,304.0 L312.6,304.0 L323.7,304.0 L334.8,304.0 L345.9,304.0 L357.0,304.0 L368.1,304.0 L379.3,304.0 L390.4,304.0 L401.5,304.0 L412.6,304.0 L423.7,304.0 L434.8,304.0 L445.9,304.0 L457.0,304.0 L468.1,304.0 L479.2,304.0 L490.3,304.0 L501.4,304.0 L512.6,304.0 L523.7,304.0 L534.8,304.0 L545.9,304.0 L557.0,304.0 L568.1,304.0 L579.2,304.0 L590.3,304.0 L601.4,304.0 L612.5,304.0 L623.6,304.0 L634.7,304.0 L645.9,304.0 L657.0,304.0 L668.1,304.0 L679.2,304.0 L690.3,304.0 L701.4,304.0 L712.5,304.0 L723.6,304.0 L734.7,304.0 L745.8,304.0 L756.9,304.0 L768.0,292.3 L779.2,290.8 L790.3,301.5 L801.4,303.9 L812.5,303.4 L823.6,303.4 L834.7,298.6 L845.8,302.4 L856.9,303.9 L868.0,303.8 L879.1,218.9 L890.2,227.6 L901.3,281.6 L912.5,301.7 L923.6,303.2 L934.7,303.1 L945.8,301.3 L956.9,302.7 L968.0,303.6 L968.0,304.0 Z" class="b-seo"/><polyline points="46.0,260.8 57.1,243.2 68.2,268.1 79.3,291.8 90.4,294.7 101.5,300.2 112.7,291.6 123.8,282.8 134.9,291.0 146.0,277.0 157.1,289.7 168.2,296.3 179.3,303.1 190.4,302.8 201.5,260.1 212.6,112.7 223.7,192.5 234.8,265.0 246.0,242.7 257.1,245.3 268.2,249.2 279.3,216.9 290.4,190.3 301.5,253.8 312.6,274.9 323.7,265.0 334.8,276.5 345.9,289.4 357.0,259.7 368.1,200.8 379.3,208.9 390.4,254.7 401.5,213.2 412.6,270.3 423.7,237.4 434.8,122.4 445.9,14.0 457.0,258.9 468.1,278.7 479.2,281.2 490.3,295.3 501.4,273.5 512.6,215.4 523.7,261.4 534.8,268.6 545.9,281.0 557.0,264.1 568.1,253.0 579.2,241.3 590.3,236.1 601.4,93.4 612.5,186.0 623.6,252.9 634.7,228.6 645.9,266.2 657.0,281.9 668.1,241.8 679.2,179.6 690.3,239.1 701.4,237.0 712.5,251.1 723.6,291.2 734.7,284.7 745.8,223.1 756.9,242.6 768.0,218.3 779.2,206.6 790.3,230.6 801.4,214.5 812.5,207.9 823.6,245.8 834.7,218.3 845.8,249.7 856.9,253.4 868.0,254.0 879.1,187.6 890.2,201.5 901.3,229.3 912.5,263.0 923.6,272.4 934.7,283.3 945.8,289.8 956.9,296.7 968.0,294.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><polyline points="46.0,260.8 57.1,252.0 68.2,257.4 79.3,266.0 90.4,271.7 101.5,276.5 112.7,278.6 123.8,281.8 134.9,288.6 146.0,289.9 157.1,289.6 168.2,289.8 179.3,290.2 190.4,291.8 201.5,288.6 212.6,263.1 223.7,251.0 234.8,247.5 246.0,239.8 257.1,231.6 268.2,223.9 279.3,217.7 290.4,228.8 301.5,237.6 312.6,239.0 323.7,242.2 334.8,246.7 345.9,252.4 357.0,258.5 368.1,260.0 379.3,253.6 390.4,250.7 401.5,243.3 412.6,242.4 423.7,235.0 434.8,215.4 445.9,188.7 457.0,195.8 468.1,199.3 479.2,209.0 490.3,212.6 501.4,217.7 512.6,231.0 523.7,266.4 534.8,267.7 545.9,268.1 557.0,265.6 568.1,259.6 579.2,255.0 590.3,257.9 601.4,233.9 612.5,222.1 623.6,218.1 634.7,213.0 645.9,214.9 657.0,220.7 668.1,221.5 679.2,233.9 690.3,241.4 701.4,239.2 712.5,242.4 723.6,246.0 734.7,246.4 745.8,243.7 756.9,252.7 768.0,249.7 779.2,245.4 790.3,242.5 801.4,231.5 812.5,220.5 823.6,223.8 834.7,220.3 845.8,224.8 856.9,231.5 868.0,234.8 879.1,231.0 890.2,230.0 901.3,227.7 912.5,234.1 923.6,237.3 934.7,241.6 945.8,246.7 956.9,262.3 968.0,275.6" class="ma" fill="none" stroke-width="1.5" stroke-dasharray="4 3"/><rect class="m-seo" x="767.0" y="307.0" width="2" height="4"/><rect class="m-seo" x="778.2" y="307.0" width="2" height="4"/><rect class="m-seo" x="789.3" y="307.0" width="2" height="4"/><rect class="m-seo" x="800.4" y="307.0" width="2" height="4"/><rect class="m-seo" x="811.5" y="307.0" width="2" height="4"/><rect class="m-seo" x="822.6" y="307.0" width="2" height="4"/><rect class="m-seo" x="833.7" y="307.0" width="2" height="4"/><rect class="m-seo" x="844.8" y="307.0" width="2" height="4"/><rect class="m-seo" x="855.9" y="307.0" width="2" height="4"/><rect class="m-seo" x="867.0" y="307.0" width="2" height="4"/><rect class="m-seo" x="878.1" y="307.0" width="2" height="4"/><rect class="m-seo" x="889.2" y="307.0" width="2" height="4"/><rect class="m-seo" x="900.3" y="307.0" width="2" height="4"/><rect class="m-seo" x="911.5" y="307.0" width="2" height="4"/><rect class="m-seo" x="922.6" y="307.0" width="2" height="4"/><rect class="m-seo" x="933.7" y="307.0" width="2" height="4"/><rect class="m-seo" x="944.8" y="307.0" width="2" height="4"/><rect class="m-seo" x="955.9" y="307.0" width="2" height="4"/><rect class="m-seo" x="967.0" y="307.0" width="2" height="4"/><text class="tick" x="46.0" y="322" text-anchor="middle">20 jul</text><text class="tick" x="179.3" y="322" text-anchor="middle">1 ago</text><text class="tick" x="334.8" y="322" text-anchor="middle">15 ago</text><text class="tick" x="523.7" y="322" text-anchor="middle">1 sep</text><text class="tick" x="679.2" y="322" text-anchor="middle">15 sep</text><text class="tick" x="856.9" y="322" text-anchor="middle">1 oct</text><circle cx="445.9" cy="14.0" r="3.5" fill="currentColor"/><text class="evnum" x="445.9" y="5.0" text-anchor="middle">4.712</text><circle cx="601.4" cy="93.4" r="3.5" fill="currentColor"/><text class="evnum" x="601.4" y="84.4" text-anchor="middle">3.422</text><circle cx="212.6" cy="112.7" r="3.5" fill="currentColor"/><text class="evnum" x="212.6" y="103.7" text-anchor="middle">3.108</text></svg></div></div></div>
+  <p class="nota">Su día más alto fue el 25 de agosto, con 4.712 vistas, y lo explica <b>«El doble riesgo para Latinoamérica, por su dependencia de China»</b>. La mediana diaria es de 814 vistas: el trabajo vive de picos, no de piso. Las notas en las que entró SEO aportaron el 4,7% de esas vistas.</p>
+</section>
+
+<section aria-labelledby="s-mes">
+  <div class="sec-head">
+    <p class="eyebrow">Reparto</p>
+    <h2 id="s-mes">El mismo volumen, mejor repartido</h2>
+    <p>No se trata de publicar más: se trata de mover las notas de donde no rinden a donde sí. Con sus
+    11,9 notas por semana:</p>
+  </div>
+  <div class="plan">
+    <div><h3><span class="chip down"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 1h10L5 9z"/></svg>Menos</span></h3><ul><li><b>Argentina: deuda, bonos y riesgo electoral</b>: hoy 40 notas con mediana de 264 vistas.</li><li><b>Cripto</b>: hoy 9 notas con mediana de 152 vistas.</li><li><b>Chile, Perú y Bolivia</b>: hoy 21 notas con mediana de 105 vistas.</li></ul></div>
+    <div><h3><span class="chip up"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 9h10L5 1z"/></svg>Más</span></h3><ul><li><b>Riesgo país e inflación de la región</b>: mediana de 1.216 vistas, y solo 7 notas.</li><li><b>Argentina: Milei, economía y encuestas</b>: mediana de 465 vistas, y solo 9 notas.</li><li><b>La Fed, tasas y bonos del Tesoro</b>: mediana de 325 vistas, y solo 6 notas.</li></ul></div>
+  </div>
+</section>
+
+<section aria-labelledby="s-cal">
+  <div class="sec-head">
+    <p class="eyebrow">Calendario</p>
+    <h2 id="s-cal">Hasta enero de 2027</h2>
+    <p>Temas con fecha conocida que en su sección ya tienen demanda. No son una predicción: son citas del calendario
+    que conviene tener escritas antes, no el mismo día.</p>
+  </div>
+  <div class="cal"><div class="ev"><p class="when">Octubre</p><h3>Elecciones legislativas en Argentina: qué hacen los bonos y el dólar</h3><p class="que">su serie de riesgo electoral ya lleva 35 y 48 clics por nota en búsqueda, y la deuda es su nicho</p></div><div class="ev"><p class="when">Octubre</p><h3>Riesgo país de América Latina al cierre de octubre, país por país</h3><p class="que">la entrega de julio hizo 721 clics y la de septiembre 200: es su fórmula más repetible</p></div><div class="ev"><p class="when">Noviembre</p><h3>Inflación de octubre en América Latina, país por país</h3><p class="que">la de agosto hizo 220 clics de búsqueda y 157 de News; sale todos los meses</p></div><div class="ev"><p class="when">Noviembre</p><h3>Aguinaldo y fiestas patrias: el calendario de pagos del Cono Sur</h3><p class="que">SEO lo propuso el 15 de septiembre con dos enfoques y la nota no salió con su firma</p></div><div class="ev"><p class="when">Diciembre</p><h3>Balance 2026 de Wall Street: las acciones que más subieron y las que más cayeron</h3><p class="que">su cierre del tercer trimestre hizo 80 clics con posición 1,1: la de fin de año tiene más demanda</p></div><div class="ev"><p class="when">Diciembre</p><h3>Qué esperar de la Fed de Warsh en 2027</h3><p class="que">sus notas de la Fed suman 109 y 27 clics; el cambio de mandato es cita fija</p></div><div class="ev"><p class="when">Enero</p><h3>Proyecciones de inflación y dólar 2027 para Argentina, Chile, Perú y Brasil</h3><p class="que">la nota de proyecciones de bonos de septiembre hizo 136 clics y posición 1,3</p></div><div class="ev"><p class="when">Enero</p><h3>Riesgo país y balance anual de la deuda latinoamericana</h3><p class="que">su serie mensual de riesgo país es lo que más Discover le deja: 172 clics solo en la de julio</p></div></div>
+  <p class="nota">Esta tabla es agenda, no medición: las fechas son ciertas y la demanda de cada tema está en sus
+  propias consultas, pero todavía no hay datos de octubre a enero para decir cuánto rendirá cada una.</p>
+</section>
+
+<section aria-labelledby="s-ever">
+  <div class="sec-head">
+    <p class="eyebrow">Vida larga</p>
+    <h2 id="s-ever">Notas viejas que siguen trabajando</h2>
+    <p>Sus notas publicadas antes del 20 de julio de 2026 que todavía traían vistas en la ventana.</p>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Nota</th><th>Publicada</th><th>Vistas en la ventana</th><th>De búsqueda</th></tr></thead><tbody><tr><td>El doble riesgo para Latinoamérica, por su dependencia de China</td><td>15 jun 2026</td><td><div class="barline"><div class="bar" title="13.318 vistas" style="--w:100.0%"><span class="fill"></span></div><span class="val">13.318</span></div></td><td>0</td></tr><tr><td>Así cerró la inflación en los países de América Latina en el primer semestre de 2026</td><td>16 jul 2026</td><td><div class="barline"><div class="bar" title="741 vistas" style="--w:5.6%"><span class="fill"></span></div><span class="val">741</span></div></td><td>393</td></tr><tr><td>Riesgo país en América Latina: toda la región mejoró en el primer semestre</td><td>2 jul 2026</td><td><div class="barline"><div class="bar" title="632 vistas" style="--w:4.7%"><span class="fill"></span></div><span class="val">632</span></div></td><td>244</td></tr><tr><td>Cuáles son las criptomonedas que subieron de precio en el primer semestre</td><td>4 jul 2026</td><td><div class="barline"><div class="bar" title="163 vistas" style="--w:1.2%"><span class="fill"></span></div><span class="val">163</span></div></td><td>5</td></tr><tr><td>Por qué el bitcoin vuelve a caer y qué oportunidades de repunte hay</td><td>5 jun 2026</td><td><div class="barline"><div class="bar" title="152 vistas" style="--w:1.1%"><span class="fill"></span></div><span class="val">152</span></div></td><td>35</td></tr><tr><td>¿Cuál es el país más competitivo de América Latina? Así quedó el ranking mundial</td><td>19 jun 2026</td><td><div class="barline"><div class="bar" title="90 vistas" style="--w:0.7%"><span class="fill"></span></div><span class="val">90</span></div></td><td>183</td></tr></tbody></table></div>
+  <p class="nota"><b>Casi no tiene notas con vida larga.</b> Solo 7 de sus
+  3.581 notas anteriores a la ventana pasaron de 50 vistas en estos dos meses. Su trabajo se agota en días:
+  todo lo que hace depende de publicar otra vez.</p>
+</section>
+
+<section aria-labelledby="s-gsc">
+  <div class="sec-head">
+    <p class="eyebrow">Búsqueda</p>
+    <h2 id="s-gsc">Notas que Google muestra y nadie abre</h2>
+    <p>Sin una sección propia no hay tabla de consultas suya, así que esto va por nota: páginas de Juan Pablo Álvarez con muchas impresiones y muy poco clic. La demanda está; el titular no la recoge.</p>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Nota suya</th><th>Impresiones</th><th>Clics</th><th>CTR</th></tr></thead><tbody><tr><td>mercadolibre triplicara su capacidad logistica en chile para 2027 y promete 2500 empleos nuevos</td><td><div class="barline"><div class="bar" title="91.256 impresiones" style="--w:100.0%"><span class="fill"></span></div><span class="val">91.256</span></div></td><td>34</td><td>0,04%</td></tr><tr><td>pensabas pagar us200 por chatgpt pro openai suspende nuevas suscripciones por demanda de astra</td><td><div class="barline"><div class="bar" title="63.710 impresiones" style="--w:69.8%"><span class="fill"></span></div><span class="val">63.710</span></div></td><td>289</td><td>0,45%</td></tr><tr><td>los datos que hay que conocer de anthropic fabricante de claude antes de su llegada a wall street</td><td><div class="barline"><div class="bar" title="33.740 impresiones" style="--w:37.0%"><span class="fill"></span></div><span class="val">33.740</span></div></td><td>15</td><td>0,04%</td></tr><tr><td>de nvidia a micron asi cerraron el tercer trimestre 2026 las principales acciones de wall street</td><td><div class="barline"><div class="bar" title="27.928 impresiones" style="--w:30.6%"><span class="fill"></span></div><span class="val">27.928</span></div></td><td>80</td><td>0,29%</td></tr><tr><td>de colombia y venezuela a argentina paises donde es feriado el 12 de octubre</td><td><div class="barline"><div class="bar" title="26.395 impresiones" style="--w:28.9%"><span class="fill"></span></div><span class="val">26.395</span></div></td><td>41</td><td>0,16%</td></tr><tr><td>cual es el pais mas competitivo de america latina asi quedo el ranking mundial</td><td><div class="barline"><div class="bar" title="25.073 impresiones" style="--w:27.5%"><span class="fill"></span></div><span class="val">25.073</span></div></td><td>183</td><td>0,73%</td></tr><tr><td>momento de invertir en nvidia bofa dice que su valuacion es la mas baja en una decada</td><td><div class="barline"><div class="bar" title="15.104 impresiones" style="--w:16.6%"><span class="fill"></span></div><span class="val">15.104</span></div></td><td>170</td><td>1,13%</td></tr><tr><td>las razones por las que el sol peruano se ha convertido en la moneda mas estable de latinoamerica</td><td><div class="barline"><div class="bar" title="11.470 impresiones" style="--w:12.6%"><span class="fill"></span></div><span class="val">11.470</span></div></td><td>75</td><td>0,65%</td></tr></tbody></table></div>
+  
+  
+</section>
+
+<section aria-labelledby="s-stop">
+  <div class="sec-head">
+    <p class="eyebrow">Recortes</p>
+    <h2 id="s-stop">Qué dejar de publicar</h2>
+  </div>
+  <ul class="stop"><li><h3>Chile, Perú y Bolivia</h3><p>21 notas con mediana de 105 vistas. <b>«Las razones por las que el sol peruano se ha convertido en la moneda más estable de Latinoamérica»</b> (6), <b>«Grupo BID prevé destinar hasta US$5.000 millones a Uruguay entre 2026 y 2030»</b> (27).</p></li><li><h3>Cripto</h3><p>9 notas con mediana de 152 vistas. <b>«Así les fue a las principales cripto en el primer semestre: los derrumbes de bitcoin y ether»</b> (2), <b>«¿El bitcoin ya tocó su piso? Tres miradas distintas sobre el mercado cripto»</b> (16).</p></li><li><h3>Energía, minería y Vaca Muerta</h3><p>5 notas con mediana de 170 vistas. <b>«Cuáles son los motivos detrás del nuevo máximo histórico del cobre y hasta dónde puede llegar»</b> (150), <b>«Estos son los cuatro factores que podrían llevar al cobre a US$15.000»</b> (158).</p></li><li><h3>La nota de agenda sin cifra ni consecuencia</h3><p>Sus seis notas más flojas de la ventana hacen entre 0 y 45 vistas en siete días, contra una mediana de 237. Ninguna lleva cifra en el titular.</p></li></ul>
+</section>
+
+<section>
+  <div class="sec-head"><p class="eyebrow">El detalle</p><h2>Nota por nota, en su primera semana</h2>
+  <p>Sus notas publicadas entre el 20 de julio de 2026 y el 4 de octubre de 2026, con sus siete primeros días completos.</p></div>
+  <div class="table-wrap"><table><thead><tr><th>Nota</th><th>Publicada</th><th>Vistas 7 días</th><th>Discover</th><th>Búsqueda</th><th>Caract.</th><th>Tema</th></tr></thead><tbody><tr><td>Qué países de Latinoamérica están mejor posicionados en la carrera de la IA, según Oxford</td><td>3 oct</td><td><div class="barline"><div class="bar" title="3.077 vistas" style="--w:100.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">3.077</span></div></td><td>3.500</td><td>147</td><td>89</td><td>Otros</td></tr><tr><td>Pruebas PISA: resultados de 13 países revelan el rezago educativo de América Latina</td><td>8 sep</td><td><div class="barline"><div class="bar" title="3.037 vistas" style="--w:98.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">3.037</span></div></td><td>1.037</td><td>1.823</td><td>83</td><td>Riesgo país e inflación de la región</td></tr><tr><td>AtlasIntel: Aprobación de Javier Milei anota leve mejora en encuesta clave de agosto</td><td>8 sep</td><td><div class="barline"><div class="bar" title="2.264 vistas" style="--w:73.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">2.264</span></div></td><td>721</td><td>629</td><td>84</td><td>Argentina: Milei, economía y encuestas</td></tr><tr><td>Así viene la inflación en América Latina, país por país: los números de agosto 2026</td><td>15 sep</td><td><div class="barline"><div class="bar" title="2.017 vistas" style="--w:65.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">2.017</span></div></td><td>30</td><td>220</td><td>83</td><td>Riesgo país e inflación de la región</td></tr><tr><td>Acciones del S&amp;P 500 con potencial en septiembre de 2026: qué sugieren los expertos</td><td>5 sep</td><td><div class="barline"><div class="bar" title="1.844 vistas" style="--w:59.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">1.844</span></div></td><td>1.073</td><td>485</td><td>83</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Desaprobación de Milei sube al 62,4% según una encuesta de AtlasIntel para Bloomberg</td><td>7 ago</td><td><div class="barline"><div class="bar" title="1.594 vistas" style="--w:51.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">1.594</span></div></td><td>135</td><td>895</td><td>84</td><td>Argentina: Milei, economía y encuestas</td></tr><tr><td>Estos son los precios objetivo de Wall Street para las acciones de MercadoLibre previo a su balance</td><td>4 ago</td><td><div class="barline"><div class="bar" title="1.467 vistas" style="--w:47.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">1.467</span></div></td><td>192</td><td>247</td><td>99</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Los países de Latinoamérica con mayor morosidad bancaria: Argentina encabeza la lista</td><td>4 ago</td><td><div class="barline"><div class="bar" title="1.460 vistas" style="--w:47.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">1.460</span></div></td><td>671</td><td>174</td><td>85</td><td>Riesgo país e inflación de la región</td></tr><tr><td>Cómo se posicionan los magnates en acciones argentinas: de Druckenmiller y Citrone a Peter Thiel</td><td>19 ago</td><td><div class="barline"><div class="bar" title="1.372 vistas" style="--w:44.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">1.372</span></div></td><td>806</td><td>35</td><td>96</td><td>Otros</td></tr><tr><td>Así cerró el riesgo país en Latinoamérica en el mes de julio</td><td>4 ago</td><td><div class="barline"><div class="bar" title="1.348 vistas" style="--w:43.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">1.348</span></div></td><td>172</td><td>721</td><td>60</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>El mercado eleva el riesgo de default para el gobierno que suceda a Milei</td><td>24 ago</td><td><div class="barline"><div class="bar" title="1.261 vistas" style="--w:41.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">1.261</span></div></td><td>78</td><td>0</td><td>73</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Inflación en América Latina a julio 2026: del negativo en Costa Rica al 576% en Venezuela</td><td>18 ago</td><td><div class="barline"><div class="bar" title="1.206 vistas" style="--w:39.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">1.206</span></div></td><td>868</td><td>61</td><td>89</td><td>Riesgo país e inflación de la región</td></tr><tr><td>¿Por qué viene cayendo la inversión en Argentina?</td><td>24 sep</td><td><div class="barline"><div class="bar" title="1.139 vistas" style="--w:37.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">1.139</span></div></td><td>17</td><td>114</td><td>49</td><td>Otros</td></tr><tr><td>Inversiones en Argentina: los bonos en dólares que sugieren los expertos para septiembre</td><td>31 ago</td><td><div class="barline"><div class="bar" title="1.088 vistas" style="--w:35.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">1.088</span></div></td><td>272</td><td>136</td><td>88</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Así cerró el riesgo país en Latinoamérica en septiembre: fuerte alza en Argentina, Bolivia y Ecuador</td><td>2 oct</td><td><div class="barline"><div class="bar" title="1.031 vistas" style="--w:33.5%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">1.031</span></div></td><td>1</td><td>200</td><td>100</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>¿La caída del riesgo país argentino generará una ola de salidas a la bolsa? Esto ven analistas</td><td>21 jul</td><td><div class="barline"><div class="bar" title="979 vistas" style="--w:31.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">979</span></div></td><td>0</td><td>0</td><td>94</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Cómo llegaría la economía de Milei a las elecciones de 2027, según analistas</td><td>21 sep</td><td><div class="barline"><div class="bar" title="769 vistas" style="--w:25.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">769</span></div></td><td>19</td><td>95</td><td>76</td><td>Argentina: Milei, economía y encuestas</td></tr><tr><td>Supervielle revirtió pérdidas y una consultora consideró que “cotiza con descuento desmedido”</td><td>11 ago</td><td><div class="barline"><div class="bar" title="730 vistas" style="--w:23.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">730</span></div></td><td>44</td><td>164</td><td>93</td><td>Otros</td></tr><tr><td>¿Por qué las acciones del S&amp;P 500 son resilientes ante la caída de los bonos?</td><td>2 oct</td><td><div class="barline"><div class="bar" title="673 vistas" style="--w:21.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">673</span></div></td><td>327</td><td>97</td><td>77</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>¿Qué opciones tiene el gobierno de Javier Milei para estimular la economía?</td><td>11 ago</td><td><div class="barline"><div class="bar" title="664 vistas" style="--w:21.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">664</span></div></td><td>15</td><td>43</td><td>75</td><td>Argentina: Milei, economía y encuestas</td></tr><tr><td>La reacción del mercado argentino ante la medida de la CNV que limita el uso de cheques</td><td>15 sep</td><td><div class="barline"><div class="bar" title="660 vistas" style="--w:21.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">660</span></div></td><td>918</td><td>38</td><td>87</td><td>Otros</td></tr><tr><td>Por qué BlackRock sigue optimista con el mercado estadounidense y qué mira en Latinoamérica</td><td>14 ago</td><td><div class="barline"><div class="bar" title="653 vistas" style="--w:21.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">653</span></div></td><td>301</td><td>10</td><td>91</td><td>Otros</td></tr><tr><td>¿Qué incluye la megarreforma económica de Kast en Chile? Los principales cambios</td><td>6 ago</td><td><div class="barline"><div class="bar" title="636 vistas" style="--w:20.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">636</span></div></td><td>9</td><td>711</td><td>80</td><td>Chile, Perú y Bolivia</td></tr><tr><td>¿Momento de invertir en Nvidia? BofA dice que su valuación es la más baja en una década</td><td>10 ago</td><td><div class="barline"><div class="bar" title="623 vistas" style="--w:20.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">623</span></div></td><td>201</td><td>170</td><td>87</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>¿Qué impacto pueden tener las elecciones de Brasil en los activos argentinos?</td><td>29 sep</td><td><div class="barline"><div class="bar" title="614 vistas" style="--w:20.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">614</span></div></td><td>4</td><td>104</td><td>77</td><td>Otros</td></tr><tr><td>Precios de bonos sugieren dinámica alcista para el dólar en Argentina pese a intervención oficial</td><td>5 ago</td><td><div class="barline"><div class="bar" title="608 vistas" style="--w:19.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">608</span></div></td><td>219</td><td>37</td><td>97</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Bonos de VMOS: Megaproyecto que reúne a gigantes de Vaca Muerta levantó US$233,65 millones</td><td>17 sep</td><td><div class="barline"><div class="bar" title="599 vistas" style="--w:19.5%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">599</span></div></td><td>368</td><td>133</td><td>90</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Trade electoral en Argentina: cuándo impactará en el dólar, según la experiencia internacional</td><td>25 ago</td><td><div class="barline"><div class="bar" title="586 vistas" style="--w:19.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">586</span></div></td><td>120</td><td>0</td><td>94</td><td>Otros</td></tr><tr><td>Cae el peso de impuestos sobre los sueldos más altos en Argentina, pero no cede entre los más bajos</td><td>17 ago</td><td><div class="barline"><div class="bar" title="544 vistas" style="--w:17.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">544</span></div></td><td>5</td><td>0</td><td>99</td><td>Otros</td></tr><tr><td>Decisión clave de la Fed de Warsh: qué esperar para los bonos argentinos si suben las tasas</td><td>11 sep</td><td><div class="barline"><div class="bar" title="541 vistas" style="--w:17.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">541</span></div></td><td>0</td><td>0</td><td>91</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>¿A qué destinos exportan los países de América Latina y el Caribe?</td><td>9 ago</td><td><div class="barline"><div class="bar" title="521 vistas" style="--w:16.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">521</span></div></td><td>211</td><td>32</td><td>66</td><td>Riesgo país e inflación de la región</td></tr><tr><td>Acciones de Nike están casi 80% por debajo de su máximo de 2021: las razones</td><td>18 ago</td><td><div class="barline"><div class="bar" title="517 vistas" style="--w:16.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">517</span></div></td><td>50</td><td>61</td><td>76</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Morgan Stanley eleva su apuesta por el oro y lo ve sobre US$5.000 en 2027</td><td>20 ago</td><td><div class="barline"><div class="bar" title="504 vistas" style="--w:16.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">504</span></div></td><td>1</td><td>37</td><td>73</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>¿Por qué no aparecen compradores de bonos del Tesoro de EE.UU.? Esto advierte Bank of America</td><td>29 sep</td><td><div class="barline"><div class="bar" title="491 vistas" style="--w:16.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">491</span></div></td><td>33</td><td>29</td><td>93</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>La Fed podría iniciar esta semana su cuarto ciclo de subida de tasas en este siglo</td><td>14 sep</td><td><div class="barline"><div class="bar" title="470 vistas" style="--w:15.3%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">470</span></div></td><td>24</td><td>109</td><td>82</td><td>La Fed, tasas y bonos del Tesoro</td></tr><tr><td>Moody’s ve probable que las reformas de Argentina sigan después de 2027, con o sin Milei</td><td>21 ago</td><td><div class="barline"><div class="bar" title="465 vistas" style="--w:15.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">465</span></div></td><td>56</td><td>0</td><td>88</td><td>Argentina: Milei, economía y encuestas</td></tr><tr><td>Estos son los 7 principios que guiarán la política monetaria de la Fed en el mandato de Warsh</td><td>31 ago</td><td><div class="barline"><div class="bar" title="435 vistas" style="--w:14.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">435</span></div></td><td>82</td><td>27</td><td>93</td><td>La Fed, tasas y bonos del Tesoro</td></tr><tr><td>¿En qué invertir en Wall Street? Ciberseguridad gana atractivo ante los riesgos de la IA</td><td>21 sep</td><td><div class="barline"><div class="bar" title="426 vistas" style="--w:13.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">426</span></div></td><td>84</td><td>29</td><td>88</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Así cerró el riesgo país en América Latina en agosto: Argentina y Uruguay en los extremos</td><td>2 sep</td><td><div class="barline"><div class="bar" title="424 vistas" style="--w:13.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">424</span></div></td><td>0</td><td>572</td><td>89</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Vino de Mendoza, en declive: Argentina pierde terreno en un mercado global más chico</td><td>7 sep</td><td><div class="barline"><div class="bar" title="397 vistas" style="--w:12.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">397</span></div></td><td>259</td><td>0</td><td>84</td><td>Otros</td></tr><tr><td>Dólar en Argentina: ¿Cuál es el principal riesgo para la pax cambiaria en el corto plazo?</td><td>4 sep</td><td><div class="barline"><div class="bar" title="390 vistas" style="--w:12.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">390</span></div></td><td>7</td><td>0</td><td>89</td><td>Otros</td></tr><tr><td>Cómo funcionará la nueva caución dólar cable que autorizó ByMA para el mercado argentino</td><td>14 sep</td><td><div class="barline"><div class="bar" title="379 vistas" style="--w:12.3%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">379</span></div></td><td>32</td><td>36</td><td>88</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Riesgo electoral en Argentina: qué implica la diferencia de rendimientos entre bonos 2027 y 2028</td><td>15 sep</td><td><div class="barline"><div class="bar" title="378 vistas" style="--w:12.3%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">378</span></div></td><td>48</td><td>0</td><td>96</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>70 años de alzas de tasas de la Fed: ¿qué enseñan los ciclos pasados a la economía actual?</td><td>20 sep</td><td><div class="barline"><div class="bar" title="374 vistas" style="--w:12.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">374</span></div></td><td>67</td><td>41</td><td>90</td><td>La Fed, tasas y bonos del Tesoro</td></tr><tr><td>San Juan coloca deuda internacional tras 27 años: cuál es su situación fiscal</td><td>23 sep</td><td><div class="barline"><div class="bar" title="371 vistas" style="--w:12.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">371</span></div></td><td>134</td><td>45</td><td>77</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>¿Nvidia se convierte en un banco central del gasto tecnológico?</td><td>23 ago</td><td><div class="barline"><div class="bar" title="370 vistas" style="--w:12.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">370</span></div></td><td>145</td><td>19</td><td>63</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>¿Qué esperar del próximo balance de Microsoft? Esto ve un gigante de Wall Street</td><td>20 jul</td><td><div class="barline"><div class="bar" title="363 vistas" style="--w:11.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">363</span></div></td><td>0</td><td>8</td><td>80</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>¿Pensabas pagar US$200 por ChatGPT Pro? OpenAI suspende nuevas suscripciones por demanda de Astra</td><td>12 sep</td><td><div class="barline"><div class="bar" title="362 vistas" style="--w:11.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">362</span></div></td><td>0</td><td>289</td><td>97</td><td>Inteligencia artificial y tecnología</td></tr><tr><td>Las ganancias por acción del S&amp;P 500 irán cayendo, pero no colapsarán: Goldman Sachs</td><td>27 sep</td><td><div class="barline"><div class="bar" title="351 vistas" style="--w:11.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">351</span></div></td><td>160</td><td>47</td><td>84</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Bitcoin se acerca a los US$80.000: ¿qué está impulsando el repunte?</td><td>21 ago</td><td><div class="barline"><div class="bar" title="335 vistas" style="--w:10.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">335</span></div></td><td>0</td><td>89</td><td>67</td><td>Cripto</td></tr><tr><td>Bonos del Tesoro: la curva cambia y abre nuevas oportunidades para los inversores</td><td>18 sep</td><td><div class="barline"><div class="bar" title="335 vistas" style="--w:10.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">335</span></div></td><td>178</td><td>34</td><td>81</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>¿Cuándo y cuánto aumentaría el sueldo mínimo en Perú? Esto dice el Gobierno de Keiko Fujimori</td><td>10 ago</td><td><div class="barline"><div class="bar" title="328 vistas" style="--w:10.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">328</span></div></td><td>0</td><td>377</td><td>93</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Balance económico del Mundial 2026 en EE.UU.: Kansas City fue la ciudad más beneficiada</td><td>8 ago</td><td><div class="barline"><div class="bar" title="326 vistas" style="--w:10.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">326</span></div></td><td>0</td><td>0</td><td>87</td><td>Otros</td></tr><tr><td>MercadoLibre amplía su negocio: se podrá invertir en acciones desde la app de Mercado Pago</td><td>24 sep</td><td><div class="barline"><div class="bar" title="313 vistas" style="--w:10.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">313</span></div></td><td>0</td><td>0</td><td>90</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Qué dijeron en Wall Street sobre NEXT, el plan que presentó McDonald’s ante inversores</td><td>26 sep</td><td><div class="barline"><div class="bar" title="309 vistas" style="--w:10.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">309</span></div></td><td>19</td><td>33</td><td>86</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>De Nvidia a Micron: así cerraron el tercer trimestre 2026 las principales acciones de Wall Street</td><td>1 oct</td><td><div class="barline"><div class="bar" title="305 vistas" style="--w:9.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">305</span></div></td><td>5</td><td>80</td><td>97</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Mientras San Juan se ilusiona con el boom minero, su capital lidera el empleo informal en Argentina</td><td>10 ago</td><td><div class="barline"><div class="bar" title="303 vistas" style="--w:9.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">303</span></div></td><td>219</td><td>0</td><td>99</td><td>Otros</td></tr><tr><td>Giro histórico: los flujos hacia acciones de EE.UU. superan a los de bonos</td><td>7 sep</td><td><div class="barline"><div class="bar" title="299 vistas" style="--w:9.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">299</span></div></td><td>15</td><td>8</td><td>74</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Milei acusa a la ONU de ser una “casta de parásitos” que “miró para otro lado” con Malvinas</td><td>23 sep</td><td><div class="barline"><div class="bar" title="298 vistas" style="--w:9.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">298</span></div></td><td>4</td><td>0</td><td>91</td><td>Argentina: Milei, economía y encuestas</td></tr><tr><td>Ocho ramas industriales en Argentina acumulan caídas de producción superiores a 20% desde 2023</td><td>30 sep</td><td><div class="barline"><div class="bar" title="290 vistas" style="--w:9.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">290</span></div></td><td>156</td><td>0</td><td>94</td><td>Otros</td></tr><tr><td>Bancos centrales de Latinoamérica mantendrán cautela, pese a menor presión en el petróleo y alivio financiero</td><td>10 ago</td><td><div class="barline"><div class="bar" title="288 vistas" style="--w:9.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">288</span></div></td><td>86</td><td>8</td><td>109</td><td>Energía, minería y Vaca Muerta</td></tr><tr><td>Tasas forward de bonos argentinos empiezan a reflejar un “riesgo electoral” creciente</td><td>19 ago</td><td><div class="barline"><div class="bar" title="287 vistas" style="--w:9.3%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">287</span></div></td><td>26</td><td>35</td><td>85</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Ganancias por acción del S&amp;P 500 crecerían 30% interanual en el tercer trimestre: Deutsche Bank</td><td>22 sep</td><td><div class="barline"><div class="bar" title="271 vistas" style="--w:8.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">271</span></div></td><td>88</td><td>43</td><td>95</td><td>Otros</td></tr><tr><td>Seis preguntas clave para los inversores de Wall Street en 2026, según Lombard Odier</td><td>21 ago</td><td><div class="barline"><div class="bar" title="259 vistas" style="--w:8.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">259</span></div></td><td>60</td><td>13</td><td>84</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>¿Cómo seguirá el ritmo de compra de dólares del Banco Central argentino hasta fin de 2026?</td><td>1 sep</td><td><div class="barline"><div class="bar" title="255 vistas" style="--w:8.3%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">255</span></div></td><td>0</td><td>82</td><td>90</td><td>Otros</td></tr><tr><td>Deuda de Chile está 17 puntos del PIB por debajo de países con similar calificación</td><td>21 sep</td><td><div class="barline"><div class="bar" title="254 vistas" style="--w:8.3%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">254</span></div></td><td>22</td><td>30</td><td>83</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Gobierno argentino buscará rollear deuda por ARS$8,6 billones sin convalidar tasas altas</td><td>28 sep</td><td><div class="barline"><div class="bar" title="251 vistas" style="--w:8.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">251</span></div></td><td>49</td><td>0</td><td>88</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>¿Hasta dónde pueden llegar las acciones de AMD? BofA es optimista, pero advierte riesgos</td><td>8 ago</td><td><div class="barline"><div class="bar" title="249 vistas" style="--w:8.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">249</span></div></td><td>0</td><td>38</td><td>88</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>BYMA revela que Argentina tendrá su primer ETF local: replicará un índice de renta variable</td><td>23 sep</td><td><div class="barline"><div class="bar" title="237 vistas" style="--w:7.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">237</span></div></td><td>64</td><td>35</td><td>91</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>A un año del rescate de Bessent: cómo evolucionó el dólar, riesgo país y Merval en Argentina</td><td>22 sep</td><td><div class="barline"><div class="bar" title="235 vistas" style="--w:7.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">235</span></div></td><td>2</td><td>0</td><td>92</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Estas son las 6 criptomonedas que dejarán de aparecer en Binance en agosto</td><td>4 ago</td><td><div class="barline"><div class="bar" title="230 vistas" style="--w:7.5%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">230</span></div></td><td>0</td><td>12</td><td>74</td><td>Cripto</td></tr><tr><td>Cuáles son los motivos detrás del rally que llevó al bitcoin a subir 37% desde fines de julio</td><td>23 sep</td><td><div class="barline"><div class="bar" title="227 vistas" style="--w:7.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">227</span></div></td><td>0</td><td>39</td><td>93</td><td>Cripto</td></tr><tr><td>El impactante crecimiento que podría tener Perú después de El Niño</td><td>11 sep</td><td><div class="barline"><div class="bar" title="223 vistas" style="--w:7.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">223</span></div></td><td>0</td><td>46</td><td>66</td><td>Chile, Perú y Bolivia</td></tr><tr><td>El fondo soberano de Noruega propone uno de los mayores cambios de su historia: ¿de qué se trata?</td><td>7 sep</td><td><div class="barline"><div class="bar" title="220 vistas" style="--w:7.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">220</span></div></td><td>0</td><td>49</td><td>97</td><td>Otros</td></tr><tr><td>Un múltiplo clave para invertir en el S&amp;P 500 retrocede</td><td>28 sep</td><td><div class="barline"><div class="bar" title="220 vistas" style="--w:7.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">220</span></div></td><td>1</td><td>44</td><td>55</td><td>Otros</td></tr><tr><td>Jackson Hole es el gran evento de riesgo de bonos y dólar, según un gigante de Wall Street</td><td>24 ago</td><td><div class="barline"><div class="bar" title="219 vistas" style="--w:7.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">219</span></div></td><td>2</td><td>58</td><td>90</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>En qué invertir en Wall Street: las recomendaciones de UBS en tecnología y telecomunicaciones</td><td>24 sep</td><td><div class="barline"><div class="bar" title="215 vistas" style="--w:7.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">215</span></div></td><td>55</td><td>20</td><td>93</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Una “gran recesión minera” golpea a la economía de Chile, según Gobierno de Kast</td><td>17 sep</td><td><div class="barline"><div class="bar" title="212 vistas" style="--w:6.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">212</span></div></td><td>4</td><td>45</td><td>80</td><td>Chile, Perú y Bolivia</td></tr><tr><td>La cantidad de ETF en Wall Street se duplicó en apenas cinco años</td><td>30 ago</td><td><div class="barline"><div class="bar" title="204 vistas" style="--w:6.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">204</span></div></td><td>0</td><td>16</td><td>65</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>El impacto de Vaca Muerta: calculan que explica más de un tercio de la masa salarial en Neuquén</td><td>1 sep</td><td><div class="barline"><div class="bar" title="196 vistas" style="--w:6.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">196</span></div></td><td>112</td><td>0</td><td>95</td><td>Energía, minería y Vaca Muerta</td></tr><tr><td>Enfoques de Warsh y Bessent comparten fallas y son inconsistentes entre sí, según BofA</td><td>12 sep</td><td><div class="barline"><div class="bar" title="192 vistas" style="--w:6.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">192</span></div></td><td>9</td><td>10</td><td>86</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Mora en Argentina: el pico esperado por Grupo Galicia se demoró un trimestre</td><td>28 ago</td><td><div class="barline"><div class="bar" title="190 vistas" style="--w:6.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">190</span></div></td><td>8</td><td>0</td><td>76</td><td>Argentina: Milei, economía y encuestas</td></tr><tr><td>¿Momento de invertir en Broadcom? Esto ven UBS, BofA y Morgan Stanley</td><td>3 sep</td><td><div class="barline"><div class="bar" title="183 vistas" style="--w:5.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">183</span></div></td><td>0</td><td>52</td><td>69</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Del rally de 76% a una caída de más de 11%: qué pasó con los semiconductores</td><td>1 oct</td><td><div class="barline"><div class="bar" title="183 vistas" style="--w:5.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">183</span></div></td><td>0</td><td>7</td><td>76</td><td>Inteligencia artificial y tecnología</td></tr><tr><td>“Buena parte de la transformación de Argentina llegó para quedarse”, afirma Citi</td><td>4 sep</td><td><div class="barline"><div class="bar" title="178 vistas" style="--w:5.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">178</span></div></td><td>5</td><td>0</td><td>80</td><td>Otros</td></tr><tr><td>PIB de Paraguay crecería 4,5% y el de Bolivia caería 3,3%: los polos opuestos de Sudamérica</td><td>8 sep</td><td><div class="barline"><div class="bar" title="178 vistas" style="--w:5.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">178</span></div></td><td>73</td><td>0</td><td>91</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Datos del BCRA sugieren que la mora se mantuvo estable en agosto, con leve descenso en familias</td><td>29 sep</td><td><div class="barline"><div class="bar" title="173 vistas" style="--w:5.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">173</span></div></td><td>0</td><td>0</td><td>95</td><td>Argentina: Milei, economía y encuestas</td></tr><tr><td>Cuáles son los motivos detrás del nuevo máximo histórico del cobre y hasta dónde puede llegar</td><td>5 ago</td><td><div class="barline"><div class="bar" title="150 vistas" style="--w:4.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">150</span></div></td><td>0</td><td>0</td><td>93</td><td>Energía, minería y Vaca Muerta</td></tr><tr><td>Advertencia de Moody’s sobre la caída en la fecundidad: ¿cómo impacta en la economía?</td><td>30 sep</td><td><div class="barline"><div class="bar" title="149 vistas" style="--w:4.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">149</span></div></td><td>0</td><td>16</td><td>85</td><td>Otros</td></tr><tr><td>Mora en Argentina: Banco Nación recorta 6 puntos la tasa de refinanciación de deudas</td><td>7 sep</td><td><div class="barline"><div class="bar" title="143 vistas" style="--w:4.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">143</span></div></td><td>3</td><td>0</td><td>84</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Los bonos vuelven a funcionar como bonos: qué marca la historia</td><td>11 sep</td><td><div class="barline"><div class="bar" title="140 vistas" style="--w:4.5%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">140</span></div></td><td>0</td><td>13</td><td>63</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>¿Por qué suben los rendimientos de los bonos de EE.UU.? Deutsche Bank resta peso a la inflación</td><td>25 sep</td><td><div class="barline"><div class="bar" title="140 vistas" style="--w:4.5%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">140</span></div></td><td>2</td><td>47</td><td>95</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>El gasto relacionado con la inteligencia artificial superaría el billón de dólares en 2026</td><td>15 ago</td><td><div class="barline"><div class="bar" title="136 vistas" style="--w:4.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">136</span></div></td><td>0</td><td>53</td><td>90</td><td>Energía, minería y Vaca Muerta</td></tr><tr><td>Estos son los cuatro factores que podrían llevar al cobre a US$15.000</td><td>8 sep</td><td><div class="barline"><div class="bar" title="132 vistas" style="--w:4.3%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">132</span></div></td><td>0</td><td>20</td><td>69</td><td>Energía, minería y Vaca Muerta</td></tr><tr><td>Gobierno argentino renovó más del 100% de los vencimientos de deuda con premios acotados</td><td>11 sep</td><td><div class="barline"><div class="bar" title="131 vistas" style="--w:4.3%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">131</span></div></td><td>1</td><td>0</td><td>88</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>¿Cuáles son los alcaldes capitalinos mejor y peor valorados de América Latina?</td><td>25 ago</td><td><div class="barline"><div class="bar" title="130 vistas" style="--w:4.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">130</span></div></td><td>0</td><td>0</td><td>78</td><td>Otros</td></tr><tr><td>Hiperescaladores de IA podrían sumar US$2 billones de deuda y aún mantener grado de inversión</td><td>9 ago</td><td><div class="barline"><div class="bar" title="130 vistas" style="--w:4.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">130</span></div></td><td>48</td><td>22</td><td>93</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Nuevo ciclo externo en Bolivia: crecen las exportaciones mineras y caen los hidrocarburos</td><td>23 sep</td><td><div class="barline"><div class="bar" title="129 vistas" style="--w:4.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">129</span></div></td><td>62</td><td>0</td><td>89</td><td>Chile, Perú y Bolivia</td></tr><tr><td>¿Es momento de invertir en acciones de semiconductores? BofA señala los pros y contras</td><td>25 ago</td><td><div class="barline"><div class="bar" title="126 vistas" style="--w:4.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">126</span></div></td><td>1</td><td>20</td><td>86</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Óscar Mario Justiniano asume como ministro de Economía interino de Bolivia tras censura a Espinoza</td><td>21 ago</td><td><div class="barline"><div class="bar" title="126 vistas" style="--w:4.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">126</span></div></td><td>0</td><td>94</td><td>98</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Tasa que refleja el riesgo electoral se disparó en Argentina y reduce margen del programa financiero</td><td>1 oct</td><td><div class="barline"><div class="bar" title="124 vistas" style="--w:4.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">124</span></div></td><td>3</td><td>0</td><td>100</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Bitcoin y Kevin Warsh: cómo las señales de la Fed pueden afectar su precio</td><td>2 sep</td><td><div class="barline"><div class="bar" title="122 vistas" style="--w:4.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">122</span></div></td><td>0</td><td>37</td><td>74</td><td>La Fed, tasas y bonos del Tesoro</td></tr><tr><td>Cómo las reservas de Perú podrían amortiguar el impacto del fenómeno de El Niño Costero</td><td>3 ago</td><td><div class="barline"><div class="bar" title="122 vistas" style="--w:4.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">122</span></div></td><td>7</td><td>0</td><td>87</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Cuatro modelos de negocios en  vehículos autónomos: datos clave a la hora de invertir</td><td>14 sep</td><td><div class="barline"><div class="bar" title="116 vistas" style="--w:3.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">116</span></div></td><td>2</td><td>7</td><td>85</td><td>Otros</td></tr><tr><td>Los datos que hay que conocer de Anthropic, fabricante de Claude, antes de su llegada a Wall Street</td><td>29 sep</td><td><div class="barline"><div class="bar" title="114 vistas" style="--w:3.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">114</span></div></td><td>0</td><td>15</td><td>99</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>BofA cree que Estados Unidos dio un paso “significativo” al intervenir en el mercado japonés</td><td>17 ago</td><td><div class="barline"><div class="bar" title="113 vistas" style="--w:3.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">113</span></div></td><td>7</td><td>13</td><td>92</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Intervención de EE.UU. en el yen fue “ineficaz y contraproducente”: Deutsche Bank</td><td>18 ago</td><td><div class="barline"><div class="bar" title="110 vistas" style="--w:3.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">110</span></div></td><td>0</td><td>25</td><td>81</td><td>Otros</td></tr><tr><td>MercadoLibre triplicará su capacidad logística en Chile para 2027 y promete 2.500 empleos nuevos</td><td>28 ago</td><td><div class="barline"><div class="bar" title="109 vistas" style="--w:3.5%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">109</span></div></td><td>0</td><td>34</td><td>96</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Ventas de centros comerciales en Perú aumentarían 8% en 2026: llegarían a 40.000 millones de soles</td><td>22 sep</td><td><div class="barline"><div class="bar" title="107 vistas" style="--w:3.5%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">107</span></div></td><td>0</td><td>0</td><td>98</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Inversión minera en Perú creció casi 43% en el primer semestre de 2026</td><td>20 ago</td><td><div class="barline"><div class="bar" title="106 vistas" style="--w:3.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">106</span></div></td><td>0</td><td>0</td><td>70</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Uruguay profundiza la desdolarización de su deuda</td><td>13 ago</td><td><div class="barline"><div class="bar" title="104 vistas" style="--w:3.4%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">104</span></div></td><td>7</td><td>0</td><td>49</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>¿Cuáles son los principales escollos en América Latina para lograr una consolidación fiscal?</td><td>16 ago</td><td><div class="barline"><div class="bar" title="102 vistas" style="--w:3.3%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">102</span></div></td><td>14</td><td>0</td><td>92</td><td>Otros</td></tr><tr><td>Chile destruye más empleos de los que crea por primera vez desde 2011, según Horizontal</td><td>7 sep</td><td><div class="barline"><div class="bar" title="100 vistas" style="--w:3.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">100</span></div></td><td>0</td><td>33</td><td>87</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Crédito comercial de la banca chilena crece por debajo del ritmo prepandemia, señala Moody’s</td><td>26 ago</td><td><div class="barline"><div class="bar" title="97 vistas" style="--w:3.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">97</span></div></td><td>0</td><td>0</td><td>92</td><td>Chile, Perú y Bolivia</td></tr><tr><td>¿Qué pasará con la deuda peruana si El Niño 2026 retrasa la consolidación fiscal?</td><td>23 sep</td><td><div class="barline"><div class="bar" title="95 vistas" style="--w:3.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">95</span></div></td><td>1</td><td>0</td><td>81</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>De Colombia y Venezuela a Argentina: países donde es feriado el 12 de octubre</td><td>30 sep</td><td><div class="barline"><div class="bar" title="92 vistas" style="--w:3.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">92</span></div></td><td>3</td><td>41</td><td>77</td><td>Otros</td></tr><tr><td>¿Comprar acciones de Microsoft? BofA ve potencial y eleva su precio objetivo</td><td>1 sep</td><td><div class="barline"><div class="bar" title="89 vistas" style="--w:2.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">89</span></div></td><td>0</td><td>13</td><td>76</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Sueldo mínimo en Perú: cuánto sube en octubre y cuándo volverá a subir</td><td>29 sep</td><td><div class="barline"><div class="bar" title="89 vistas" style="--w:2.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">89</span></div></td><td>0</td><td>0</td><td>70</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Argentina acorta su brecha con el mundo en precios de bienes durables, ropa y calzado</td><td>10 sep</td><td><div class="barline"><div class="bar" title="85 vistas" style="--w:2.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">85</span></div></td><td>1</td><td>0</td><td>85</td><td>Otros</td></tr><tr><td>Julio Velarde fue ratificado por el Ejecutivo como banquero central de Perú</td><td>21 ago</td><td><div class="barline"><div class="bar" title="84 vistas" style="--w:2.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">84</span></div></td><td>3</td><td>0</td><td>75</td><td>Chile, Perú y Bolivia</td></tr><tr><td>CAF aprueba préstamos por US$305 millones para obras en el subte de Buenos Aires y en San Juan</td><td>1 oct</td><td><div class="barline"><div class="bar" title="79 vistas" style="--w:2.6%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">79</span></div></td><td>8</td><td>0</td><td>94</td><td>Otros</td></tr><tr><td>Chile abre una nueva fuente de financiamiento: coloca US$458 millones en bonos en francos suizos</td><td>28 sep</td><td><div class="barline"><div class="bar" title="71 vistas" style="--w:2.3%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">71</span></div></td><td>15</td><td>0</td><td>96</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>Los robos violentos de criptomonedas alcanzarían un récord en 2026: Chainalysis</td><td>11 ago</td><td><div class="barline"><div class="bar" title="67 vistas" style="--w:2.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">67</span></div></td><td>0</td><td>7</td><td>79</td><td>Cripto</td></tr><tr><td>Informe privado cuestiona el rol de YPFB en Bolivia: “En 90 años, no ha logrado consolidarse”</td><td>31 ago</td><td><div class="barline"><div class="bar" title="67 vistas" style="--w:2.2%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">67</span></div></td><td>0</td><td>0</td><td>93</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Megaproyecto de amoníaco verde se aprueba en Chile: los detalles y la histórica inversión</td><td>27 ago</td><td><div class="barline"><div class="bar" title="63 vistas" style="--w:2.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">63</span></div></td><td>2</td><td>0</td><td>89</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Nuevo centro comercial de Cencosud en Hacienda El Peñón: esto se sabe del proyecto</td><td>13 ago</td><td><div class="barline"><div class="bar" title="63 vistas" style="--w:2.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">63</span></div></td><td>0</td><td>48</td><td>82</td><td>Otros</td></tr><tr><td>Desempleo en Argentina alcanzó el 7,9% en el segundo trimestre 2026: crece 0,3 puntos en un año</td><td>17 sep</td><td><div class="barline"><div class="bar" title="59 vistas" style="--w:1.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">59</span></div></td><td>3</td><td>31</td><td>95</td><td>Argentina: Milei, economía y encuestas</td></tr><tr><td>Banco Mundial señala los obstáculos de Uruguay para crecer más y generar empleo</td><td>15 sep</td><td><div class="barline"><div class="bar" title="58 vistas" style="--w:1.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">58</span></div></td><td>0</td><td>0</td><td>79</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Las tres razones que explican el auge de emisiones corporativas en Wall Street</td><td>3 sep</td><td><div class="barline"><div class="bar" title="54 vistas" style="--w:1.8%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">54</span></div></td><td>0</td><td>12</td><td>78</td><td>Wall Street: acciones y recomendaciones</td></tr><tr><td>Asamblea de Bolivia censura al ministro de Economía con 91 votos</td><td>18 ago</td><td><div class="barline"><div class="bar" title="53 vistas" style="--w:1.7%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">53</span></div></td><td>0</td><td>0</td><td>64</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Trabajadores de Lima pierden más de ocho días al año atrapados en el tráfico</td><td>11 ago</td><td><div class="barline"><div class="bar" title="47 vistas" style="--w:1.5%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">47</span></div></td><td>0</td><td>0</td><td>76</td><td>Otros</td></tr><tr><td>¿Los altos rendimientos de los bonos golpearán al mercado? No necesariamente, según Lombard Odier</td><td>26 sep</td><td><div class="barline"><div class="bar" title="45 vistas" style="--w:1.5%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">45</span></div></td><td>2</td><td>0</td><td>97</td><td>Argentina: deuda, bonos y riesgo electoral</td></tr><tr><td>El resurgimiento de la industria manufacturera: los cuatro factores que la impulsan</td><td>16 sep</td><td><div class="barline"><div class="bar" title="45 vistas" style="--w:1.5%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">45</span></div></td><td>0</td><td>15</td><td>83</td><td>Otros</td></tr><tr><td>Gobierno de Chile espera que mejoren las cifras de empleo en septiembre</td><td>31 ago</td><td><div class="barline"><div class="bar" title="34 vistas" style="--w:1.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">34</span></div></td><td>0</td><td>0</td><td>71</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Ajustes de tasas serán limitados y no afectarán a activos de riesgo: Lombard Odier</td><td>22 sep</td><td><div class="barline"><div class="bar" title="33 vistas" style="--w:1.1%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">33</span></div></td><td>6</td><td>0</td><td>82</td><td>La Fed, tasas y bonos del Tesoro</td></tr><tr><td>Grupo BID prevé destinar hasta US$5.000 millones a Uruguay entre 2026 y 2030</td><td>4 ago</td><td><div class="barline"><div class="bar" title="27 vistas" style="--w:0.9%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">27</span></div></td><td>1</td><td>0</td><td>76</td><td>Chile, Perú y Bolivia</td></tr><tr><td>Menos choques, pero reparaciones más caras: así será el futuro de los seguros automotores</td><td>30 ago</td><td><div class="barline"><div class="bar" title="0 vistas" style="--w:0.0%;--mid:7.7%"><span class="fill"></span><span class='mid'></span></div><span class="val">0</span></div></td><td>0</td><td>0</td><td>89</td><td>Otros</td></tr></tbody></table></div>
+</section>
+
+<section>
+  <div class="sec-head"><p class="eyebrow">Método</p><h2>Qué muestran y qué no</h2></div>
+  <ul class="caveats">
+    <li><b>Vistas:</b> GA4 «All Sites GA4 Nuevo», páginas y pantallas por fecha, filtro <code>ocho rutas del sitio</code>,
+    del 20 de julio de 2026 al 11 de octubre de 2026. La extracción cuadra exactamente con el total del informe: 3.033.189 vistas.</li>
+    <li><b>Discover y búsqueda:</b> Search Console, propiedad de dominio, mismo filtro y misma ventana:
+    97 páginas en Discover y 102 en búsqueda.</li>
+    <li><b>Sus notas</b> salen del feed de su página de autor: 3.581 en total.</li>
+    <li><b>La mediana, no el promedio.</b> Unas pocas notas se llevan casi todo: el promedio haría ver bien temas
+    que no lo están.</li>
+    <li><b>Lo que no dice:</b> una nota puede rendir poco y ser necesaria. Esto mide audiencia, no valor periodístico.</li>
+    <li>Las cifras se bajan a mano de GA4 y de Search Console. No se estiman ni se completan.</li>
+  </ul>
+</section>
+<p class="firma">SEO · Bloomberg Línea · 16 de octubre de 2026</p>
+</main>
+</body>
+</html>
